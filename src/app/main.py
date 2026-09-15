@@ -1997,7 +1997,7 @@ async def _pp_security_middleware(
 
 if _PP_TRUSTED_HOSTS:
 
-    # app.add_middleware(_PPTrustedHostMiddleware)
+    # # host validation delegated to render edge
 
 
 # ------------------------------------------------------------
