@@ -325,14 +325,7 @@ _PP_PRODUCTION = (
 )
 
 
-_PP_TRUSTED_HOSTS = [
-    x.strip()
-    for x in _pp_os.getenv(
-        "PP_TRUSTED_HOSTS",
-        "127.0.0.1,localhost"
-    ).split(",")
-    if x.strip()
-]
+_PP_TRUSTED_HOSTS = ["*"]
 
 
 _PP_CORS_ORIGINS = [
@@ -2004,7 +1997,7 @@ async def _pp_security_middleware(
 
 if _PP_TRUSTED_HOSTS:
 
-    app.add_middleware(_PPTrustedHostMiddleware, allowed_hosts=["*"])
+    # app.add_middleware(_PPTrustedHostMiddleware)
 
 
 # ------------------------------------------------------------
