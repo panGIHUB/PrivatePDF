@@ -1997,12 +1997,7 @@ async def _pp_security_middleware(
 
 if _PP_TRUSTED_HOSTS:
 
-    # # host validation delegated to render edge
-
-
-# ------------------------------------------------------------
-# HTTPS redirect
-# ------------------------------------------------------------
+    pass
 
 if _PP_PRODUCTION:
 
