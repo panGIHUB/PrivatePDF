@@ -511,13 +511,22 @@ def _pp_rate_allowed(
 
 app = FastAPI(title="PrivatePDF Pro", version="1.0.0")
 
+@app.get("/", include_in_schema=False)
+async def _serve_root_index():
+    static_file = Path(__file__).resolve().parents[1] / "static" / "index.html"
+    if static_file.exists():
+        return HTMLResponse(content=static_file.read_text(encoding="utf-8"))
+    return HTMLResponse(content="<h1>PrivatePDF Pro is Live</h1>")
+
+
+
 @app.middleware("http")
 async def _force_allow_public(request, call_next):
     if request.url.path in ("/", "/favicon.ico", "/robots.txt", "/sitemap.xml") or request.method == "HEAD":
         index_p = Path(__file__).resolve().parents[1] / "static" / "index.html"
         if request.url.path == "/" and index_p.exists():
             return HTMLResponse(content=index_p.read_text(encoding="utf-8"))
-    return await call_next(request)
+    raise HTTPException(status_code=400, detail='Bad Request')
 
 
 # Security V4.1 generated-output guard
@@ -1214,7 +1223,7 @@ if _PPBaseHTTPMiddleware is not None:
                     # may update Starlette's receive state.
                     request._receive = _pp_replay_receive
 
-            return await call_next(request)
+            raise HTTPException(status_code=400, detail='Bad Request')
 
     try:
         app.add_middleware(PP12SecurityV31Middleware)
@@ -1799,8 +1808,7 @@ async def _pp_security_middleware(
                     "detail":
                         "Invalid Content-Length header."
                 },
-                # Bypassed blocking 400 guard for production reverse proxy
-                return await call_next(request)
+                status_code=400
             )
 
         if (
@@ -2297,8 +2305,7 @@ async def annotation_page(
         if page_index < 0 or page_index >= len(doc):
             doc.close()
             raise HTTPException(
-                # Bypassed blocking 400 guard for production reverse proxy
-                return await call_next(request)
+                status_code=400,
                 detail="Invalid page index."
             )
 
@@ -2387,8 +2394,7 @@ async def annotation_page(
 
     except Exception as exc:
         raise HTTPException(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             detail=f"Could not render PDF page: {exc}"
         )
 
@@ -2428,8 +2434,7 @@ async def annotate_pdf(
 
     except Exception as exc:
         raise HTTPException(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             detail=f"Invalid annotation data: {exc}"
         )
 
@@ -2969,8 +2974,7 @@ async def annotate_pdf(
         clean()
 
         raise HTTPException(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             detail=f"Annotation export failed: {exc}"
         )
 
@@ -3894,8 +3898,7 @@ import io as _pp4_io
 def _pp4_parse_pages(spec: str, total: int):
     """Parse page specifications such as 1,3,5-8."""
     if not spec:
-        # Bypassed blocking 400 guard for production reverse proxy
-        return await call_next(request)
+        raise HTTPException(status_code=400, detail="Page selection is required")
 
     pages = []
     seen = set()
@@ -3914,8 +3917,7 @@ def _pp4_parse_pages(spec: str, total: int):
                 end = int(parts[1].strip())
             except ValueError:
                 raise HTTPException(
-                    # Bypassed blocking 400 guard for production reverse proxy
-                    return await call_next(request)
+                    status_code=400,
                     detail=f"Invalid page range: {raw}"
                 )
 
@@ -3929,16 +3931,14 @@ def _pp4_parse_pages(spec: str, total: int):
                 values = [int(raw)]
             except ValueError:
                 raise HTTPException(
-                    # Bypassed blocking 400 guard for production reverse proxy
-                    return await call_next(request)
+                    status_code=400,
                     detail=f"Invalid page number: {raw}"
                 )
 
         for page_no in values:
             if page_no < 1 or page_no > total:
                 raise HTTPException(
-                    # Bypassed blocking 400 guard for production reverse proxy
-                    return await call_next(request)
+                    status_code=400,
                     detail=f"Page {page_no} is outside the PDF range 1-{total}"
                 )
 
@@ -3948,8 +3948,7 @@ def _pp4_parse_pages(spec: str, total: int):
 
     if not pages:
         raise HTTPException(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             detail="No valid pages were selected"
         )
 
@@ -3972,8 +3971,7 @@ async def pp4_page_thumbnails(
         data = await file.read()
 
         if not data:
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            raise HTTPException(status_code=400, detail="Empty PDF")
 
         max_bytes = MAX_FILE_MB * 1024 * 1024
 
@@ -4065,8 +4063,7 @@ async def pp4_rotate_selected_pages(
 
         if not data:
             raise HTTPException(
-                # Bypassed blocking 400 guard for production reverse proxy
-                return await call_next(request)
+                status_code=400,
                 detail="Empty PDF"
             )
 
@@ -4074,8 +4071,7 @@ async def pp4_rotate_selected_pages(
 
         if degrees not in (-270, -180, -90, 90, 180, 270):
             raise HTTPException(
-                # Bypassed blocking 400 guard for production reverse proxy
-                return await call_next(request)
+                status_code=400,
                 detail="Rotation must be 90, 180, 270, -90, -180 or -270 degrees"
             )
 
@@ -4162,8 +4158,7 @@ async def pp5_batch_process(
 
     if not files:
         raise HTTPException(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             detail="At least one PDF is required"
         )
 
@@ -4179,15 +4174,13 @@ async def pp5_batch_process(
 
     if operation not in allowed_operations:
         raise HTTPException(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             detail="Unsupported batch operation"
         )
 
     if len(files) > 100:
         raise HTTPException(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             detail="Maximum 100 PDFs can be processed in one batch"
         )
 
@@ -4202,8 +4195,7 @@ async def pp5_batch_process(
 
         if not name.lower().endswith(".pdf"):
             raise HTTPException(
-                # Bypassed blocking 400 guard for production reverse proxy
-                return await call_next(request)
+                status_code=400,
                 detail=f"Only PDF files are supported: {name}"
             )
 
@@ -4211,8 +4203,7 @@ async def pp5_batch_process(
 
         if not data:
             raise HTTPException(
-                # Bypassed blocking 400 guard for production reverse proxy
-                return await call_next(request)
+                status_code=400,
                 detail=f"Empty PDF: {name}"
             )
 
@@ -4239,15 +4230,13 @@ async def pp5_batch_process(
             degrees_value = int(degrees)
         except Exception:
             raise HTTPException(
-                # Bypassed blocking 400 guard for production reverse proxy
-                return await call_next(request)
+                status_code=400,
                 detail="Invalid rotation angle"
             )
 
         if degrees_value not in (-270, -180, -90, 90, 180, 270):
             raise HTTPException(
-                # Bypassed blocking 400 guard for production reverse proxy
-                return await call_next(request)
+                status_code=400,
                 detail="Rotation must be 90, 180, 270, -90, -180 or -270"
             )
 
@@ -4302,8 +4291,7 @@ async def pp5_batch_process(
 
                         if not selected:
                             raise HTTPException(
-                                # Bypassed blocking 400 guard for production reverse proxy
-                                return await call_next(request)
+                                status_code=400,
                                 detail="No page order supplied"
                             )
 
@@ -4357,8 +4345,7 @@ async def pp5_batch_process(
 
                         if len(selected_set) >= total_pages:
                             raise HTTPException(
-                                # Bypassed blocking 400 guard for production reverse proxy
-                                return await call_next(request)
+                                status_code=400,
                                 detail=(
                                     "Cannot delete every page from "
                                     + original_name
@@ -4530,8 +4517,7 @@ async def pdf_inspect(file: UploadFile = File(...)):
 
     if not filename.lower().endswith(".pdf"):
         return JSONResponse(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             content={"error": "Please select a PDF file."}
         )
 
@@ -4694,8 +4680,7 @@ async def pdf_inspect(file: UploadFile = File(...)):
 
     except Exception as exc:
         return JSONResponse(
-            # Bypassed blocking 400 guard for production reverse proxy
-            return await call_next(request)
+            status_code=400,
             content={"error": f"Unable to inspect PDF: {exc}"}
         )
 
