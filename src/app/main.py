@@ -511,6 +511,15 @@ def _pp_rate_allowed(
 
 app = FastAPI(title="PrivatePDF Pro", version="1.0.0")
 
+@app.middleware("http")
+async def _force_allow_public(request, call_next):
+    if request.url.path in ("/", "/favicon.ico", "/robots.txt", "/sitemap.xml") or request.method == "HEAD":
+        index_p = Path(__file__).resolve().parents[1] / "static" / "index.html"
+        if request.url.path == "/" and index_p.exists():
+            return HTMLResponse(content=index_p.read_text(encoding="utf-8"))
+    return await call_next(request)
+
+
 # Security V4.1 generated-output guard
 try:
     app.add_middleware(
