@@ -2006,7 +2006,7 @@ if _PP_TRUSTED_HOSTS:
 
     app.add_middleware(
         _PPTrustedHostMiddleware,
-        allowed_hosts=
+        allowed_hosts = ["*"]
             _PP_TRUSTED_HOSTS
     )
 
