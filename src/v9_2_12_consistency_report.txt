@@ -1,0 +1,20 @@
+V9.2.12 PRODUCTION CONSISTENCY REPORT
+==============================================================
+
+PRODUCTION LOCK: PASS
+DEPENDENCY HEALTH: PASS
+APPLICATION IMPORT: PASS
+PYTHON SYNTAX: PASS
+HTTPX2 FAMILY REMOVAL: PASS
+SBOM GENERATION: PASS
+VULNERABILITY AUDIT: PASS
+LICENSE INVENTORY: PASS
+
+TECHNICAL STATUS: PASS
+
+LEGAL OPEN ITEM:
+PyMuPDF 1.28.2 is dual licensed under AGPL-3.0 or
+Artifex Commercial License. Commercial proprietary deployment
+requires a deliberate licensing decision before release.
+
+V9.2.12 STATUS: TECHNICAL PASS

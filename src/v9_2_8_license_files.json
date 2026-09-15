@@ -1,0 +1,432 @@
+[
+  {
+    "name": "annotated-doc",
+    "version": "0.0.5",
+    "license_files": []
+  },
+  {
+    "name": "annotated-types",
+    "version": "0.8.0",
+    "license_files": []
+  },
+  {
+    "name": "anyio",
+    "version": "4.15.1",
+    "license_files": []
+  },
+  {
+    "name": "arabic-reshaper",
+    "version": "3.0.1",
+    "license_files": []
+  },
+  {
+    "name": "asn1crypto",
+    "version": "1.5.1",
+    "license_files": []
+  },
+  {
+    "name": "boolean.py",
+    "version": "5.0",
+    "license_files": []
+  },
+  {
+    "name": "brotli",
+    "version": "1.2.0",
+    "license_files": []
+  },
+  {
+    "name": "CacheControl",
+    "version": "0.14.4",
+    "license_files": []
+  },
+  {
+    "name": "certifi",
+    "version": "2026.7.22",
+    "license_files": []
+  },
+  {
+    "name": "cffi",
+    "version": "2.1.0",
+    "license_files": []
+  },
+  {
+    "name": "charset-normalizer",
+    "version": "3.4.9",
+    "license_files": []
+  },
+  {
+    "name": "click",
+    "version": "8.5.0",
+    "license_files": []
+  },
+  {
+    "name": "colorama",
+    "version": "0.4.6",
+    "license_files": []
+  },
+  {
+    "name": "cryptography",
+    "version": "50.0.0",
+    "license_files": []
+  },
+  {
+    "name": "cssselect2",
+    "version": "0.9.0",
+    "license_files": []
+  },
+  {
+    "name": "cyclonedx-python-lib",
+    "version": "11.12.0",
+    "license_files": []
+  },
+  {
+    "name": "defusedxml",
+    "version": "0.7.1",
+    "license_files": []
+  },
+  {
+    "name": "fastapi",
+    "version": "0.141.1",
+    "license_files": []
+  },
+  {
+    "name": "filelock",
+    "version": "3.32.5",
+    "license_files": []
+  },
+  {
+    "name": "fonttools",
+    "version": "4.63.0",
+    "license_files": []
+  },
+  {
+    "name": "h11",
+    "version": "0.16.0",
+    "license_files": []
+  },
+  {
+    "name": "html5lib",
+    "version": "1.1",
+    "license_files": []
+  },
+  {
+    "name": "httpcore2",
+    "version": "2.12.0",
+    "license_files": []
+  },
+  {
+    "name": "httptools",
+    "version": "0.8.0",
+    "license_files": []
+  },
+  {
+    "name": "httpx2",
+    "version": "2.12.0",
+    "license_files": []
+  },
+  {
+    "name": "idna",
+    "version": "3.18",
+    "license_files": []
+  },
+  {
+    "name": "iniconfig",
+    "version": "2.3.0",
+    "license_files": []
+  },
+  {
+    "name": "license-expression",
+    "version": "30.4.4",
+    "license_files": []
+  },
+  {
+    "name": "lxml",
+    "version": "6.1.1",
+    "license_files": []
+  },
+  {
+    "name": "Markdown",
+    "version": "3.10.3",
+    "license_files": []
+  },
+  {
+    "name": "markdown-it-py",
+    "version": "4.2.0",
+    "license_files": []
+  },
+  {
+    "name": "mdurl",
+    "version": "0.1.2",
+    "license_files": []
+  },
+  {
+    "name": "msgpack",
+    "version": "1.2.2",
+    "license_files": []
+  },
+  {
+    "name": "oscrypto",
+    "version": "1.3.0",
+    "license_files": []
+  },
+  {
+    "name": "packageurl-python",
+    "version": "0.17.6",
+    "license_files": []
+  },
+  {
+    "name": "packaging",
+    "version": "26.3",
+    "license_files": []
+  },
+  {
+    "name": "pillow",
+    "version": "12.3.0",
+    "license_files": []
+  },
+  {
+    "name": "pip",
+    "version": "26.2",
+    "license_files": []
+  },
+  {
+    "name": "pip-api",
+    "version": "0.0.34",
+    "license_files": []
+  },
+  {
+    "name": "pip-requirements-parser",
+    "version": "32.0.1",
+    "license_files": []
+  },
+  {
+    "name": "pip_audit",
+    "version": "2.10.1",
+    "license_files": []
+  },
+  {
+    "name": "platformdirs",
+    "version": "4.11.7",
+    "license_files": []
+  },
+  {
+    "name": "pluggy",
+    "version": "1.6.0",
+    "license_files": []
+  },
+  {
+    "name": "py-serializable",
+    "version": "2.1.0",
+    "license_files": []
+  },
+  {
+    "name": "pycparser",
+    "version": "3.0",
+    "license_files": []
+  },
+  {
+    "name": "pydantic",
+    "version": "2.13.5",
+    "license_files": []
+  },
+  {
+    "name": "pydantic_core",
+    "version": "2.46.5",
+    "license_files": []
+  },
+  {
+    "name": "pydyf",
+    "version": "0.12.1",
+    "license_files": []
+  },
+  {
+    "name": "Pygments",
+    "version": "2.21.0",
+    "license_files": []
+  },
+  {
+    "name": "pyHanko",
+    "version": "0.36.2",
+    "license_files": []
+  },
+  {
+    "name": "pyhanko-certvalidator",
+    "version": "0.31.4",
+    "license_files": []
+  },
+  {
+    "name": "pymupdf",
+    "version": "1.28.2",
+    "license_files": []
+  },
+  {
+    "name": "pyparsing",
+    "version": "3.3.2",
+    "license_files": []
+  },
+  {
+    "name": "pypdf",
+    "version": "6.18.0",
+    "license_files": []
+  },
+  {
+    "name": "pyphen",
+    "version": "0.17.2",
+    "license_files": []
+  },
+  {
+    "name": "pytest",
+    "version": "9.1.1",
+    "license_files": []
+  },
+  {
+    "name": "python-bidi",
+    "version": "0.6.11",
+    "license_files": []
+  },
+  {
+    "name": "python-dotenv",
+    "version": "1.2.3",
+    "license_files": []
+  },
+  {
+    "name": "python-multipart",
+    "version": "0.0.32",
+    "license_files": []
+  },
+  {
+    "name": "PyYAML",
+    "version": "6.0.3",
+    "license_files": []
+  },
+  {
+    "name": "reportlab",
+    "version": "4.5.1",
+    "license_files": []
+  },
+  {
+    "name": "requests",
+    "version": "2.34.2",
+    "license_files": []
+  },
+  {
+    "name": "rich",
+    "version": "15.0.0",
+    "license_files": []
+  },
+  {
+    "name": "six",
+    "version": "1.17.0",
+    "license_files": []
+  },
+  {
+    "name": "sortedcontainers",
+    "version": "2.4.0",
+    "license_files": []
+  },
+  {
+    "name": "sshuttle",
+    "version": "1.3.2",
+    "license_files": []
+  },
+  {
+    "name": "starlette",
+    "version": "1.6.0",
+    "license_files": []
+  },
+  {
+    "name": "svglib",
+    "version": "2.0.2",
+    "license_files": []
+  },
+  {
+    "name": "tinycss2",
+    "version": "1.5.1",
+    "license_files": []
+  },
+  {
+    "name": "tinyhtml5",
+    "version": "2.1.0",
+    "license_files": []
+  },
+  {
+    "name": "tomli",
+    "version": "2.4.1",
+    "license_files": []
+  },
+  {
+    "name": "tomli_w",
+    "version": "1.2.0",
+    "license_files": []
+  },
+  {
+    "name": "truststore",
+    "version": "0.10.4",
+    "license_files": []
+  },
+  {
+    "name": "typing-inspection",
+    "version": "0.4.4",
+    "license_files": []
+  },
+  {
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "license_files": []
+  },
+  {
+    "name": "tzdata",
+    "version": "2026.3",
+    "license_files": []
+  },
+  {
+    "name": "tzlocal",
+    "version": "5.4.4",
+    "license_files": []
+  },
+  {
+    "name": "uritools",
+    "version": "6.1.3",
+    "license_files": []
+  },
+  {
+    "name": "urllib3",
+    "version": "2.7.0",
+    "license_files": []
+  },
+  {
+    "name": "uvicorn",
+    "version": "0.52.4",
+    "license_files": []
+  },
+  {
+    "name": "watchfiles",
+    "version": "1.2.0",
+    "license_files": []
+  },
+  {
+    "name": "weasyprint",
+    "version": "69.0",
+    "license_files": []
+  },
+  {
+    "name": "webencodings",
+    "version": "0.5.1",
+    "license_files": []
+  },
+  {
+    "name": "websockets",
+    "version": "17.1",
+    "license_files": []
+  },
+  {
+    "name": "xhtml2pdf",
+    "version": "0.2.17",
+    "license_files": []
+  },
+  {
+    "name": "zopfli",
+    "version": "0.4.3",
+    "license_files": []
+  }
+]

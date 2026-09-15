@@ -1,0 +1,6180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PrivatePDF Pro — Professional PDF Toolkit</title>
+<style>
+:root{--bg:#f4f6fb;--panel:#fff;--ink:#101828;--muted:#667085;--line:#e4e7ec;--brand:#635bff;--brand2:#4f46e5;--soft:#eef2ff;--ok:#027a48;--danger:#b42318;--shadow:0 12px 35px rgba(16,24,40,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}.app{display:flex;min-height:100vh}.sidebar{width:270px;background:#111827;color:#fff;padding:20px 13px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-weight:900;font-size:21px;padding:8px 10px 20px}.brand small{display:block;font-size:11px;color:#a5b4fc;margin-top:4px}.navgroup{margin:15px 0}.navtitle{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#98a2b3;padding:8px 12px}.nav button{display:block;width:100%;text-align:left;border:0;background:transparent;color:#d0d5dd;padding:10px 12px;border-radius:10px;cursor:pointer}.nav button:hover,.nav button.active{background:#1f2937;color:#fff}.main{flex:1;min-width:0}.topbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:5}.badge{background:#ecfdf3;color:var(--ok);padding:7px 11px;border-radius:99px;font-size:12px;font-weight:800}.content{max-width:1280px;margin:auto;padding:32px}.hero{background:linear-gradient(135deg,#111827,#312e81);color:#fff;border-radius:24px;padding:36px;box-shadow:var(--shadow);display:flex;justify-content:space-between;gap:28px;align-items:center}.hero h1{font-size:40px;line-height:1.04;margin:0 0 12px}.hero p{color:#d1d5db;max-width:760px;margin:0}.shield{font-size:70px}.section{margin-top:30px}.section h2{margin:0 0 5px}.section>p{color:var(--muted);margin-top:0}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 3px 14px rgba(16,24,40,.04)}.card h3{margin:0 0 6px}.card p{color:var(--muted);font-size:13px;min-height:36px}.card input,.card select{width:100%;padding:10px 11px;border:1px solid #d0d5dd;border-radius:9px;margin:5px 0;background:#fff}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.label{font-size:11px;font-weight:800;color:#475467;margin:7px 0 2px;display:block}.range{display:grid;grid-template-columns:1fr 56px;gap:8px;align-items:center}.range input[type=range]{padding:0}.range output{font-size:12px;text-align:right;color:var(--muted)}.primary{background:var(--brand);color:#fff;border:0;padding:11px 14px;border-radius:10px;font-weight:800;cursor:pointer;width:100%;margin-top:8px}.primary:hover{background:var(--brand2)}.secondary{background:#fff;color:#344054;border:1px solid #d0d5dd}.drop{border:2px dashed #cbd5e1;border-radius:12px;padding:14px;text-align:center;color:var(--muted);margin:7px 0}.note{font-size:12px;color:var(--muted);margin-top:8px}.preview{border:1px solid var(--line);background:#f8fafc;border-radius:12px;min-height:92px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:9px}.wm-preview{font-weight:800;letter-spacing:.04em;transform:rotate(-35deg);opacity:.35;user-select:none}.privacy{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.privacy div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px}.privacy b{display:block;margin-bottom:5px}.privacy span{font-size:12px;color:var(--muted)}#status{position:fixed;right:24px;bottom:24px;background:#111827;color:#fff;padding:13px 17px;border-radius:12px;display:none;box-shadow:var(--shadow);z-index:10}
+.img-drop{border:2px dashed #c7d2fe;background:#f8faff;border-radius:16px;padding:22px;text-align:center;cursor:pointer}.img-drop.drag{background:#eef2ff;border-color:#635bff}.img-files{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}.img-thumb{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:8px;overflow:hidden}.img-thumb img{width:100%;height:110px;object-fit:contain;background:#fff;border-radius:8px}.img-meta{font-size:11px;color:var(--muted);margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.tab{border:1px solid #d0d5dd;background:#fff;border-radius:999px;padding:8px 12px;font-weight:800;color:#475467;cursor:pointer}.tab.active{background:#eef2ff;border-color:#a5b4fc;color:#3730a3}.studio-grid{display:grid;grid-template-columns:minmax(320px,1.2fr) minmax(320px,.8fr);gap:18px}.statbar{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#f8fafc;border:1px solid var(--line);border-radius:11px;padding:10px}.stat b{display:block;font-size:15px}.stat span{font-size:10px;color:var(--muted)}.checkrow{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0}.checkrow label{font-size:12px;color:#475467}.subcard{background:#f8fafc;border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px}@media(max-width:900px){.studio-grid{grid-template-columns:1fr}.statbar{grid-template-columns:1fr 1fr}}
+.hidden{display:none}@media(max-width:850px){.sidebar{width:72px;padding:15px 8px}.brand{font-size:0}.brand:first-letter{font-size:22px}.brand small,.navtitle,.nav button span{display:none}.nav button{text-align:center}.content{padding:18px}.hero{padding:25px}.hero h1{font-size:31px}.privacy{grid-template-columns:1fr}.topbar{padding:0 18px}.row,.row3{grid-template-columns:1fr}}
+</style>
+<style id="professional-workspace-css">
+/* ===== PROFESSIONAL WORKSPACE LAYER ===== */
+.workspace-shell{
+  margin:18px 0;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+  box-shadow:0 16px 50px rgba(0,0,0,.18);
+  overflow:hidden;
+}
+
+.workspace-head{
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.workspace-title{
+  font-size:17px;
+  font-weight:700;
+}
+
+.workspace-subtitle{
+  margin-top:4px;
+  opacity:.62;
+  font-size:12px;
+}
+
+.workspace-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.workspace-drop{
+  margin:18px;
+  padding:30px 20px;
+  border:1.5px dashed rgba(255,255,255,.20);
+  border-radius:16px;
+  text-align:center;
+  cursor:pointer;
+  transition:.2s ease;
+  background:rgba(255,255,255,.018);
+}
+
+.workspace-drop:hover,
+.workspace-drop.dragover{
+  border-color:rgba(255,255,255,.55);
+  background:rgba(255,255,255,.055);
+  transform:translateY(-1px);
+}
+
+.workspace-drop-icon{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.workspace-drop-title{
+  font-size:15px;
+  font-weight:650;
+}
+
+.workspace-drop-text{
+  margin-top:5px;
+  opacity:.55;
+  font-size:12px;
+}
+
+.workspace-files{
+  padding:0 18px 18px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:10px;
+}
+
+.workspace-empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:24px;
+  opacity:.45;
+  font-size:13px;
+}
+
+.workspace-file{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:13px;
+  background:rgba(255,255,255,.025);
+  min-width:0;
+  transition:.18s ease;
+}
+
+.workspace-file:hover{
+  background:rgba(255,255,255,.055);
+  border-color:rgba(255,255,255,.16);
+}
+
+.workspace-thumb{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  border-radius:10px;
+  object-fit:cover;
+  background:rgba(255,255,255,.07);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:21px;
+  overflow:hidden;
+}
+
+.workspace-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.workspace-meta{
+  min-width:0;
+  flex:1;
+}
+
+.workspace-name{
+  font-size:12px;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.workspace-info{
+  margin-top:4px;
+  font-size:10px;
+  opacity:.55;
+  line-height:1.4;
+}
+
+.workspace-remove{
+  border:0;
+  background:transparent;
+  opacity:.45;
+  cursor:pointer;
+  font-size:16px;
+  padding:4px;
+}
+
+.workspace-remove:hover{
+  opacity:1;
+}
+
+.workspace-footer{
+  padding:12px 18px;
+  border-top:1px solid rgba(255,255,255,.07);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.workspace-count{
+  font-size:11px;
+  opacity:.58;
+}
+
+.workspace-status{
+  font-size:11px;
+  opacity:.72;
+}
+
+@media(max-width:650px){
+  .workspace-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .workspace-files{
+    grid-template-columns:1fr;
+  }
+
+  .workspace-drop{
+    padding:24px 14px;
+  }
+}
+</style>
+
+
+<style id="advanced-smart-queue-css">
+
+.pp-smart-queue{
+  margin:16px 0;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:17px;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    );
+  box-shadow:0 15px 45px rgba(0,0,0,.16);
+}
+
+.pp-smart-queue.hidden{
+  display:none;
+}
+
+.pp-queue-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:15px 17px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.pp-queue-title{
+  font-weight:700;
+  font-size:15px;
+}
+
+.pp-queue-sub{
+  margin-top:3px;
+  font-size:11px;
+  opacity:.52;
+}
+
+.pp-queue-head-actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.pp-queue-drop{
+  margin:13px;
+  padding:18px;
+  text-align:center;
+  border:1px dashed rgba(255,255,255,.18);
+  border-radius:13px;
+  cursor:pointer;
+  transition:.18s ease;
+}
+
+.pp-queue-drop:hover,
+.pp-queue-drop.dragover{
+  background:rgba(255,255,255,.055);
+  border-color:rgba(255,255,255,.5);
+}
+
+.pp-queue-drop-icon{
+  font-size:23px;
+  opacity:.7;
+}
+
+.pp-queue-drop-title{
+  margin-top:4px;
+  font-size:12px;
+  font-weight:650;
+}
+
+.pp-queue-drop-text{
+  margin-top:3px;
+  font-size:10px;
+  opacity:.48;
+}
+
+.pp-queue-items{
+  padding:0 13px 13px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.pp-queue-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:11px;
+  background:rgba(255,255,255,.025);
+  min-width:0;
+}
+
+.pp-queue-number{
+  width:25px;
+  height:25px;
+  flex:0 0 25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:7px;
+  background:rgba(255,255,255,.07);
+  font-size:10px;
+  opacity:.7;
+}
+
+.pp-queue-thumb{
+  width:42px;
+  height:42px;
+  flex:0 0 42px;
+  border-radius:8px;
+  overflow:hidden;
+  background:rgba(255,255,255,.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+}
+
+.pp-queue-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.pp-queue-info{
+  flex:1;
+  min-width:0;
+}
+
+.pp-queue-name{
+  font-size:11px;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.pp-queue-meta{
+  margin-top:3px;
+  font-size:9px;
+  opacity:.48;
+}
+
+.pp-queue-remove{
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  opacity:.4;
+  font-size:15px;
+  padding:5px;
+}
+
+.pp-queue-remove:hover{
+  opacity:1;
+}
+
+.pp-queue-footer{
+  padding:10px 14px;
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,.07);
+  font-size:10px;
+  opacity:.55;
+}
+
+@media(max-width:600px){
+  .pp-queue-head{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .pp-queue-head-actions{
+    width:100%;
+  }
+}
+
+</style>
+
+
+<style id="pdf-workspace-upgrade-css">
+
+.pp-pdf-workspace{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  width:min(520px,calc(100vw - 32px));
+  max-height:78vh;
+  z-index:100;
+  background:#fff;
+  border:1px solid #d0d5dd;
+  border-radius:18px;
+  box-shadow:0 24px 70px rgba(16,24,40,.22);
+  overflow:hidden;
+  display:none;
+}
+
+.pp-pdf-workspace.open{
+  display:block;
+}
+
+.pp-pdf-head{
+  padding:15px 17px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid #eaecf0;
+  background:linear-gradient(135deg,#111827,#312e81);
+  color:#fff;
+}
+
+.pp-pdf-title{
+  font-size:14px;
+  font-weight:800;
+}
+
+.pp-pdf-sub{
+  margin-top:3px;
+  font-size:10px;
+  opacity:.7;
+}
+
+.pp-pdf-close{
+  border:0;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  width:30px;
+  height:30px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.pp-pdf-tools{
+  padding:10px 13px;
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  border-bottom:1px solid #eaecf0;
+  background:#f9fafb;
+}
+
+.pp-pdf-tools button{
+  border:1px solid #d0d5dd;
+  background:#fff;
+  color:#344054;
+  border-radius:8px;
+  padding:7px 9px;
+  font-size:10px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.pp-pdf-tools button:hover{
+  background:#f2f4f7;
+}
+
+.pp-pdf-drop{
+  margin:11px 13px;
+  border:1.5px dashed #98a2b3;
+  border-radius:12px;
+  padding:13px;
+  text-align:center;
+  cursor:pointer;
+  color:#667085;
+  font-size:10px;
+  transition:.18s;
+}
+
+.pp-pdf-drop.dragover{
+  border-color:#635bff;
+  background:#eef2ff;
+  color:#3730a3;
+}
+
+.pp-pdf-list{
+  padding:0 13px 13px;
+  max-height:360px;
+  overflow:auto;
+}
+
+.pp-pdf-empty{
+  text-align:center;
+  padding:25px 10px;
+  color:#98a2b3;
+  font-size:11px;
+}
+
+.pp-pdf-item{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:9px;
+  margin-top:7px;
+  border:1px solid #eaecf0;
+  border-radius:11px;
+  background:#fff;
+  cursor:grab;
+  transition:.15s;
+}
+
+.pp-pdf-item:hover{
+  border-color:#c7d2fe;
+  box-shadow:0 4px 14px rgba(16,24,40,.06);
+}
+
+.pp-pdf-item.dragging{
+  opacity:.45;
+}
+
+.pp-pdf-grip{
+  color:#98a2b3;
+  font-size:15px;
+  cursor:grab;
+}
+
+.pp-pdf-index{
+  width:25px;
+  height:25px;
+  flex:0 0 25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:7px;
+  background:#f2f4f7;
+  color:#475467;
+  font-size:10px;
+  font-weight:800;
+}
+
+.pp-pdf-icon{
+  width:38px;
+  height:38px;
+  flex:0 0 38px;
+  border-radius:8px;
+  background:#fef3f2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+}
+
+.pp-pdf-info{
+  flex:1;
+  min-width:0;
+}
+
+.pp-pdf-name{
+  font-size:11px;
+  font-weight:700;
+  color:#344054;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.pp-pdf-meta{
+  margin-top:3px;
+  font-size:9px;
+  color:#98a2b3;
+}
+
+.pp-pdf-actions{
+  display:flex;
+  gap:3px;
+}
+
+.pp-pdf-actions button{
+  width:25px;
+  height:25px;
+  padding:0;
+  border:1px solid #eaecf0;
+  background:#fff;
+  border-radius:6px;
+  cursor:pointer;
+  color:#667085;
+}
+
+.pp-pdf-actions button:hover{
+  background:#f2f4f7;
+}
+
+.pp-pdf-footer{
+  padding:10px 13px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  border-top:1px solid #eaecf0;
+  background:#f9fafb;
+}
+
+.pp-pdf-summary{
+  font-size:10px;
+  color:#667085;
+}
+
+.pp-pdf-ready{
+  font-size:10px;
+  color:#027a48;
+  font-weight:700;
+}
+
+.pp-pdf-open{
+  position:absolute;
+  z-index:20;
+  margin-top:-3px;
+  right:12px;
+  border:1px solid #d0d5dd;
+  background:#fff;
+  color:#344054;
+  border-radius:8px;
+  padding:7px 10px;
+  font-size:10px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+@media(max-width:650px){
+  .pp-pdf-workspace{
+    right:12px;
+    bottom:12px;
+    width:calc(100vw - 24px);
+  }
+
+  .pp-pdf-list{
+    max-height:300px;
+  }
+}
+
+</style>
+
+
+<style id="visual-page-manager-css">
+
+/* =========================================================
+   UPGRADE #4 - VISUAL PDF PAGE MANAGER
+   ========================================================= */
+
+.pp4-launch-wrap{
+    margin:18px 0 4px;
+}
+
+.pp4-launch{
+    width:100%;
+    min-height:54px;
+    border:1px solid #dbe2f0;
+    border-radius:16px;
+    background:linear-gradient(135deg,#111936,#27286f);
+    color:#fff;
+    font-weight:800;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 12px 28px rgba(31,41,91,.16);
+    transition:.18s ease;
+}
+
+.pp4-launch:hover{
+    transform:translateY(-1px);
+    box-shadow:0 16px 34px rgba(31,41,91,.22);
+}
+
+.pp4-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9998;
+    background:rgba(8,13,31,.62);
+    backdrop-filter:blur(8px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+}
+
+.pp4-overlay.hidden{
+    display:none;
+}
+
+.pp4-modal{
+    width:min(1180px,96vw);
+    height:min(860px,92vh);
+    background:#f6f8fc;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,.34);
+    display:flex;
+    flex-direction:column;
+    border:1px solid rgba(255,255,255,.55);
+}
+
+.pp4-head{
+    min-height:78px;
+    background:linear-gradient(135deg,#101735,#2f2a7d);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 22px;
+}
+
+.pp4-head-title{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:-.02em;
+}
+
+.pp4-head-sub{
+    margin-top:4px;
+    font-size:12px;
+    opacity:.76;
+}
+
+.pp4-close{
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:12px;
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.pp4-toolbar{
+    padding:12px 16px;
+    background:#fff;
+    border-bottom:1px solid #e4e8f0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    align-items:center;
+}
+
+.pp4-tool{
+    border:1px solid #dce2ec;
+    background:#fff;
+    color:#1d2945;
+    border-radius:10px;
+    padding:9px 12px;
+    font-weight:750;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.pp4-tool:hover{
+    background:#f2f5fb;
+}
+
+.pp4-tool.danger{
+    color:#a61d32;
+}
+
+.pp4-tool.primary{
+    background:#5d54f6;
+    border-color:#5d54f6;
+    color:#fff;
+}
+
+.pp4-spacer{
+    flex:1;
+}
+
+.pp4-filebar{
+    padding:10px 16px;
+    background:#fbfcff;
+    border-bottom:1px solid #e4e8f0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.pp4-file-input{
+    max-width:310px;
+}
+
+.pp4-status{
+    font-size:12px;
+    color:#667085;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.pp4-pages{
+    flex:1;
+    overflow:auto;
+    padding:18px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:16px;
+    align-content:start;
+}
+
+.pp4-empty{
+    grid-column:1/-1;
+    min-height:240px;
+    border:2px dashed #cbd4e3;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    color:#7b879b;
+    text-align:center;
+    background:#fff;
+}
+
+.pp4-empty strong{
+    color:#26324a;
+    margin-bottom:5px;
+}
+
+.pp4-page{
+    position:relative;
+    background:#fff;
+    border:1px solid #dfe4ee;
+    border-radius:15px;
+    padding:10px;
+    cursor:grab;
+    box-shadow:0 5px 16px rgba(20,31,61,.07);
+    transition:.15s ease;
+}
+
+.pp4-page:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(20,31,61,.12);
+}
+
+.pp4-page.selected{
+    border:2px solid #5d54f6;
+    box-shadow:0 0 0 3px rgba(93,84,246,.12);
+}
+
+.pp4-page.dragging{
+    opacity:.45;
+    transform:rotate(1deg);
+}
+
+.pp4-thumb{
+    width:100%;
+    aspect-ratio:0.72;
+    object-fit:contain;
+    background:#eef1f7;
+    border-radius:9px;
+    display:block;
+}
+
+.pp4-page-meta{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:9px;
+}
+
+.pp4-check{
+    width:18px;
+    height:18px;
+    accent-color:#5d54f6;
+}
+
+.pp4-number{
+    font-weight:900;
+    font-size:12px;
+    color:#1f2a44;
+}
+
+.pp4-drag{
+    margin-left:auto;
+    color:#9aa5b8;
+    font-size:15px;
+}
+
+.pp4-footer{
+    background:#fff;
+    border-top:1px solid #e4e8f0;
+    padding:12px 16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.pp4-count{
+    font-size:12px;
+    font-weight:800;
+    color:#526078;
+}
+
+.pp4-progress{
+    height:4px;
+    width:110px;
+    border-radius:20px;
+    background:#e8ebf2;
+    overflow:hidden;
+    display:none;
+}
+
+.pp4-progress span{
+    display:block;
+    height:100%;
+    width:0%;
+    background:#5d54f6;
+    transition:.15s;
+}
+
+@media(max-width:760px){
+
+    .pp4-overlay{
+        padding:8px;
+    }
+
+    .pp4-modal{
+        width:100%;
+        height:96vh;
+        border-radius:17px;
+    }
+
+    .pp4-head{
+        min-height:68px;
+        padding:14px;
+    }
+
+    .pp4-toolbar{
+        padding:9px;
+    }
+
+    .pp4-tool{
+        padding:8px 9px;
+        font-size:11px;
+    }
+
+    .pp4-filebar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .pp4-file-input{
+        max-width:none;
+        width:100%;
+    }
+
+    .pp4-pages{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        padding:10px;
+        gap:10px;
+    }
+
+    .pp4-footer{
+        flex-wrap:wrap;
+    }
+}
+
+</style>
+
+
+<style id="professional-batch-center-css">
+
+/* =========================================================
+   UPGRADE #5 - PROFESSIONAL BATCH CENTER
+   ========================================================= */
+
+.pp5-launch-wrap{
+    margin:16px 0 8px;
+}
+
+.pp5-launch{
+    width:100%;
+    min-height:58px;
+    border:1px solid #dbe2f0;
+    border-radius:16px;
+    background:linear-gradient(
+        135deg,
+        #101735,
+        #302b80
+    );
+    color:#fff;
+    font-weight:850;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(31,41,91,.16);
+    transition:.18s ease;
+}
+
+.pp5-launch:hover{
+    transform:translateY(-1px);
+    box-shadow:0 16px 36px rgba(31,41,91,.23);
+}
+
+.pp5-overlay{
+    position:fixed;
+    inset:0;
+    z-index:10001;
+    background:rgba(7,12,28,.66);
+    backdrop-filter:blur(8px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:22px;
+}
+
+.pp5-overlay.hidden{
+    display:none;
+}
+
+.pp5-modal{
+    width:min(1100px,96vw);
+    height:min(820px,92vh);
+    background:#f6f8fc;
+    border-radius:22px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    border:1px solid rgba(255,255,255,.55);
+    box-shadow:0 30px 90px rgba(0,0,0,.36);
+}
+
+.pp5-header{
+    background:linear-gradient(
+        135deg,
+        #101735,
+        #302b80
+    );
+    color:#fff;
+    padding:19px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.pp5-title{
+    font-size:20px;
+    font-weight:900;
+}
+
+.pp5-subtitle{
+    margin-top:4px;
+    font-size:12px;
+    opacity:.76;
+}
+
+.pp5-close{
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:12px;
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.pp5-body{
+    flex:1;
+    overflow:auto;
+    padding:18px;
+}
+
+.pp5-drop{
+    border:2px dashed #b9c4d7;
+    border-radius:17px;
+    background:#fff;
+    min-height:125px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    cursor:pointer;
+    transition:.15s ease;
+    padding:20px;
+}
+
+.pp5-drop:hover,
+.pp5-drop.dragging{
+    border-color:#5d54f6;
+    background:#f8f7ff;
+}
+
+.pp5-drop strong{
+    display:block;
+    color:#25314a;
+    font-size:15px;
+}
+
+.pp5-drop span{
+    display:block;
+    margin-top:5px;
+    color:#7a869a;
+    font-size:12px;
+}
+
+.pp5-file-input{
+    display:none;
+}
+
+.pp5-controls{
+    margin-top:14px;
+    padding:15px;
+    background:#fff;
+    border:1px solid #e0e5ee;
+    border-radius:15px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.pp5-control label{
+    display:block;
+    font-size:11px;
+    font-weight:850;
+    color:#5a667b;
+    margin-bottom:6px;
+}
+
+.pp5-control select,
+.pp5-control input{
+    width:100%;
+    min-height:42px;
+    border:1px solid #d8dfeb;
+    border-radius:10px;
+    padding:8px 10px;
+    background:#fff;
+    color:#202b42;
+    font-weight:650;
+}
+
+.pp5-pages-control{
+    display:none;
+}
+
+.pp5-pages-control.show{
+    display:block;
+}
+
+.pp5-queue{
+    margin-top:14px;
+    background:#fff;
+    border:1px solid #e0e5ee;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.pp5-queue-head{
+    padding:12px 15px;
+    border-bottom:1px solid #e7eaf0;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.pp5-queue-title{
+    font-size:13px;
+    font-weight:900;
+}
+
+.pp5-queue-count{
+    margin-left:auto;
+    font-size:11px;
+    font-weight:800;
+    color:#667085;
+}
+
+.pp5-items{
+    max-height:310px;
+    overflow:auto;
+}
+
+.pp5-item{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:11px 14px;
+    border-bottom:1px solid #edf0f5;
+}
+
+.pp5-item:last-child{
+    border-bottom:0;
+}
+
+.pp5-index{
+    width:27px;
+    height:27px;
+    border-radius:8px;
+    background:#f0f2f8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:900;
+    color:#4b5870;
+    flex:none;
+}
+
+.pp5-pdf-icon{
+    width:31px;
+    height:31px;
+    border-radius:8px;
+    background:#fff0f1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    flex:none;
+}
+
+.pp5-name{
+    min-width:0;
+    flex:1;
+}
+
+.pp5-name strong{
+    display:block;
+    font-size:12px;
+    color:#26324a;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.pp5-name span{
+    display:block;
+    margin-top:2px;
+    font-size:10px;
+    color:#8994a7;
+}
+
+.pp5-status{
+    font-size:10px;
+    font-weight:850;
+    color:#64748b;
+}
+
+.pp5-status.ok{
+    color:#087a4b;
+}
+
+.pp5-status.error{
+    color:#b42318;
+}
+
+.pp5-remove{
+    width:30px;
+    height:30px;
+    border:1px solid #e1e5ec;
+    border-radius:8px;
+    background:#fff;
+    cursor:pointer;
+    color:#8791a3;
+}
+
+.pp5-remove:hover{
+    color:#b42318;
+    background:#fff5f5;
+}
+
+.pp5-empty{
+    padding:38px 20px;
+    text-align:center;
+    color:#8994a7;
+    font-size:12px;
+}
+
+.pp5-actions{
+    margin-top:14px;
+    display:flex;
+    gap:9px;
+    flex-wrap:wrap;
+}
+
+.pp5-button{
+    min-height:43px;
+    border:1px solid #d8dfeb;
+    border-radius:10px;
+    background:#fff;
+    color:#27334c;
+    padding:0 14px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.pp5-button:hover{
+    background:#f4f6fa;
+}
+
+.pp5-button.danger{
+    color:#a61d32;
+}
+
+.pp5-button.primary{
+    flex:1;
+    min-width:220px;
+    background:#5d54f6;
+    border-color:#5d54f6;
+    color:#fff;
+}
+
+.pp5-button.primary:disabled{
+    opacity:.48;
+    cursor:not-allowed;
+}
+
+.pp5-progress-wrap{
+    margin-top:14px;
+    background:#fff;
+    border:1px solid #e0e5ee;
+    border-radius:13px;
+    padding:12px 14px;
+    display:none;
+}
+
+.pp5-progress-wrap.show{
+    display:block;
+}
+
+.pp5-progress-text{
+    font-size:11px;
+    font-weight:850;
+    color:#536076;
+    margin-bottom:7px;
+}
+
+.pp5-progress{
+    height:7px;
+    background:#e8ebf2;
+    border-radius:99px;
+    overflow:hidden;
+}
+
+.pp5-progress span{
+    display:block;
+    height:100%;
+    width:0;
+    background:#5d54f6;
+    transition:.2s ease;
+}
+
+.pp5-note{
+    margin-top:10px;
+    font-size:10px;
+    color:#8791a3;
+}
+
+@media(max-width:700px){
+
+    .pp5-overlay{
+        padding:8px;
+    }
+
+    .pp5-modal{
+        width:100%;
+        height:96vh;
+        border-radius:17px;
+    }
+
+    .pp5-controls{
+        grid-template-columns:1fr;
+    }
+
+    .pp5-body{
+        padding:10px;
+    }
+
+    .pp5-status{
+        display:none;
+    }
+}
+
+</style>
+
+
+<style id="upgrade-6-global-search-theme-css">
+
+/* =========================================================
+   UPGRADE #6
+   GLOBAL SEARCH + PROFESSIONAL THEME TOGGLE
+   ========================================================= */
+
+.pp6-topbar{
+    position:sticky;
+    top:0;
+    z-index:9000;
+    min-height:64px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:10px 22px;
+    margin:-1px 0 20px 0;
+    background:rgba(255,255,255,.94);
+    border-bottom:1px solid #e5e9f1;
+    backdrop-filter:blur(14px);
+}
+
+.pp6-brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    min-width:145px;
+    font-weight:900;
+    color:#1e2942;
+    white-space:nowrap;
+}
+
+.pp6-brand-mark{
+    width:31px;
+    height:31px;
+    border-radius:9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#5d54f6,#302b80);
+    color:#fff;
+    font-size:15px;
+}
+
+.pp6-search{
+    flex:1;
+    max-width:680px;
+    position:relative;
+    margin:auto;
+}
+
+.pp6-search-icon{
+    position:absolute;
+    left:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#8a94a7;
+    font-size:15px;
+    pointer-events:none;
+}
+
+#pp6GlobalSearch{
+    width:100%;
+    height:43px;
+    box-sizing:border-box;
+    border:1px solid #dce2ec;
+    border-radius:12px;
+    background:#f7f8fb;
+    color:#202b42;
+    outline:none;
+    padding:0 76px 0 39px;
+    font-size:13px;
+    font-weight:650;
+    transition:.16s ease;
+}
+
+#pp6GlobalSearch::placeholder{
+    color:#98a2b3;
+}
+
+#pp6GlobalSearch:focus{
+    border-color:#6b63f7;
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(93,84,246,.10);
+}
+
+.pp6-search-hint{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    align-items:center;
+    gap:4px;
+    pointer-events:none;
+}
+
+.pp6-key{
+    min-width:20px;
+    height:20px;
+    padding:0 5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #d9deea;
+    border-radius:5px;
+    background:#fff;
+    color:#8b95a8;
+    font-size:9px;
+    font-weight:800;
+}
+
+.pp6-clear{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    width:25px;
+    height:25px;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    border:0;
+    border-radius:7px;
+    background:#e9ecf3;
+    color:#5c6678;
+    cursor:pointer;
+    font-weight:900;
+}
+
+.pp6-clear.show{
+    display:flex;
+}
+
+.pp6-theme{
+    flex:none;
+    width:43px;
+    height:43px;
+    border:1px solid #dce2ec;
+    border-radius:12px;
+    background:#fff;
+    color:#354057;
+    cursor:pointer;
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.16s ease;
+}
+
+.pp6-theme:hover{
+    background:#f2f4f8;
+    transform:translateY(-1px);
+}
+
+.pp6-results{
+    position:absolute;
+    left:0;
+    right:0;
+    top:49px;
+    background:#fff;
+    border:1px solid #dce2ec;
+    border-radius:13px;
+    box-shadow:0 18px 45px rgba(22,31,58,.14);
+    padding:7px;
+    display:none;
+    max-height:330px;
+    overflow:auto;
+}
+
+.pp6-results.show{
+    display:block;
+}
+
+.pp6-result{
+    width:100%;
+    border:0;
+    background:transparent;
+    border-radius:9px;
+    padding:10px 11px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-align:left;
+    cursor:pointer;
+    color:#29344c;
+}
+
+.pp6-result:hover{
+    background:#f3f4ff;
+}
+
+.pp6-result-icon{
+    width:29px;
+    height:29px;
+    border-radius:8px;
+    background:#f0efff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:none;
+}
+
+.pp6-result-name{
+    font-size:12px;
+    font-weight:850;
+}
+
+.pp6-result-section{
+    display:block;
+    margin-top:2px;
+    color:#8a94a7;
+    font-size:10px;
+}
+
+.pp6-no-results{
+    padding:18px 12px;
+    text-align:center;
+    color:#8a94a7;
+    font-size:12px;
+}
+
+/* Search filtering */
+
+.pp6-search-hidden{
+    display:none !important;
+}
+
+.pp6-search-match{
+    outline:2px solid rgba(93,84,246,.16);
+    outline-offset:2px;
+}
+
+/* Search result badge */
+
+.pp6-search-count{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:8999;
+    display:none;
+    padding:9px 12px;
+    border-radius:10px;
+    background:#202945;
+    color:#fff;
+    font-size:10px;
+    font-weight:850;
+    box-shadow:0 10px 28px rgba(0,0,0,.18);
+}
+
+.pp6-search-count.show{
+    display:block;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+body.pp6-dark{
+    background:#0c1222 !important;
+    color:#e8ecf5 !important;
+}
+
+body.pp6-dark .pp6-topbar{
+    background:rgba(13,19,35,.94);
+    border-bottom-color:#273149;
+}
+
+body.pp6-dark .pp6-brand{
+    color:#eef2fa;
+}
+
+body.pp6-dark #pp6GlobalSearch{
+    background:#151d31;
+    border-color:#303a53;
+    color:#eef2fa;
+}
+
+body.pp6-dark #pp6GlobalSearch:focus{
+    background:#182238;
+    border-color:#746cff;
+}
+
+body.pp6-dark .pp6-key{
+    background:#1b2438;
+    border-color:#35415a;
+    color:#9da8bb;
+}
+
+body.pp6-dark .pp6-theme{
+    background:#182238;
+    border-color:#303a53;
+    color:#f1f4fa;
+}
+
+body.pp6-dark .pp6-theme:hover{
+    background:#202b44;
+}
+
+body.pp6-dark .pp6-results{
+    background:#151d31;
+    border-color:#303a53;
+    box-shadow:0 20px 55px rgba(0,0,0,.45);
+}
+
+body.pp6-dark .pp6-result{
+    color:#e8edf7;
+}
+
+body.pp6-dark .pp6-result:hover{
+    background:#202a43;
+}
+
+body.pp6-dark .pp6-result-icon{
+    background:#292550;
+}
+
+body.pp6-dark .pp6-result-section{
+    color:#98a4ba;
+}
+
+body.pp6-dark .pp6-no-results{
+    color:#98a4ba;
+}
+
+/* Main application */
+
+body.pp6-dark .main,
+body.pp6-dark .content,
+body.pp6-dark main{
+    background:#0c1222 !important;
+    color:#e8ecf5 !important;
+}
+
+body.pp6-dark .section{
+    color:#e8ecf5;
+}
+
+body.pp6-dark .section h2,
+body.pp6-dark .section h3,
+body.pp6-dark .card h3{
+    color:#f1f4fa;
+}
+
+body.pp6-dark .section p,
+body.pp6-dark .card p{
+    color:#aab4c7;
+}
+
+body.pp6-dark .card{
+    background:#151d31 !important;
+    border-color:#29344c !important;
+    color:#e8ecf5;
+    box-shadow:0 10px 28px rgba(0,0,0,.18);
+}
+
+body.pp6-dark input,
+body.pp6-dark select,
+body.pp6-dark textarea{
+    background:#111a2d !important;
+    color:#e9edf6 !important;
+    border-color:#303b55 !important;
+}
+
+body.pp6-dark input::placeholder,
+body.pp6-dark textarea::placeholder{
+    color:#7f8ba2 !important;
+}
+
+body.pp6-dark .drop{
+    background:#111a2d !important;
+    border-color:#39445e !important;
+}
+
+body.pp6-dark .navtitle{
+    color:#7f8ca5 !important;
+}
+
+body.pp6-dark .nav button{
+    color:#cbd3e2 !important;
+}
+
+body.pp6-dark .nav button:hover{
+    background:#1b253b !important;
+}
+
+body.pp6-dark .nav button.active{
+    background:#232d47 !important;
+    color:#fff !important;
+}
+
+body.pp6-dark .pp-smart-queue,
+body.pp6-dark .pp-pdf-workspace,
+body.pp6-dark .pp4-overlay .pp4-modal,
+body.pp6-dark .pp5-modal{
+    color:#e8ecf5;
+}
+
+/* Existing professional workspace surfaces */
+
+body.pp6-dark .pp5-modal{
+    background:#101827;
+}
+
+body.pp6-dark .pp5-body{
+    background:#101827;
+}
+
+body.pp6-dark .pp5-drop,
+body.pp6-dark .pp5-controls,
+body.pp6-dark .pp5-queue{
+    background:#151d31;
+    border-color:#2c3851;
+}
+
+body.pp6-dark .pp5-control select,
+body.pp6-dark .pp5-control input{
+    background:#111a2d;
+    color:#e9edf6;
+    border-color:#303b55;
+}
+
+body.pp6-dark .pp5-item{
+    border-bottom-color:#29344b;
+}
+
+body.pp6-dark .pp5-name strong,
+body.pp6-dark .pp5-title{
+    color:#eef2fa;
+}
+
+body.pp6-dark .pp5-name span,
+body.pp6-dark .pp5-subtitle,
+body.pp6-dark .pp5-note{
+    color:#9ba7bb;
+}
+
+body.pp6-dark .pp5-button{
+    background:#151d31;
+    border-color:#303b55;
+    color:#e8edf6;
+}
+
+/* Visual Page Manager */
+
+body.pp6-dark .pp5-overlay{
+    background:rgba(2,6,17,.76);
+}
+
+@media(max-width:800px){
+
+    .pp6-topbar{
+        padding:9px 12px;
+        gap:9px;
+    }
+
+    .pp6-brand{
+        min-width:auto;
+    }
+
+    .pp6-brand-text{
+        display:none;
+    }
+
+    .pp6-search{
+        max-width:none;
+    }
+
+}
+
+</style>
+
+
+<style id="upgrade-7-professional-dashboard-css">
+
+/* =========================================================
+   UPGRADE #7 - PROFESSIONAL DASHBOARD
+   ========================================================= */
+
+.pp7-dashboard{
+    display:none;
+    animation:pp7Fade .22s ease;
+}
+
+.pp7-dashboard.pp7-visible{
+    display:block;
+}
+
+@keyframes pp7Fade{
+    from{opacity:0;transform:translateY(5px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+.pp7-hero{
+    position:relative;
+    overflow:hidden;
+    border-radius:22px;
+    padding:34px 36px;
+    margin-bottom:24px;
+    background:
+        radial-gradient(circle at 85% 20%,rgba(109,94,252,.35),transparent 34%),
+        linear-gradient(135deg,#111936 0%,#252b68 55%,#3d327c 100%);
+    color:#fff;
+    box-shadow:0 18px 45px rgba(24,31,66,.18);
+}
+
+.pp7-hero:after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    right:-80px;
+    bottom:-100px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:
+        0 0 0 28px rgba(255,255,255,.035),
+        0 0 0 58px rgba(255,255,255,.025);
+}
+
+.pp7-eyebrow{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    opacity:.72;
+    margin-bottom:9px;
+}
+
+.pp7-hero h1{
+    margin:0 0 10px;
+    font-size:32px;
+    line-height:1.12;
+    letter-spacing:-.025em;
+}
+
+.pp7-hero p{
+    margin:0;
+    max-width:720px;
+    color:rgba(255,255,255,.76);
+    font-size:15px;
+    line-height:1.65;
+}
+
+.pp7-privacy{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:20px;
+    padding:8px 12px;
+    border-radius:999px;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.12);
+    font-size:12px;
+    font-weight:700;
+}
+
+.pp7-privacy-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#42d392;
+    box-shadow:0 0 0 4px rgba(66,211,146,.12);
+}
+
+.pp7-section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:15px;
+    margin:26px 0 13px;
+}
+
+.pp7-section-title h3{
+    margin:0;
+    font-size:18px;
+}
+
+.pp7-section-title span{
+    font-size:12px;
+    color:#8a91a7;
+}
+
+.pp7-actions{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:13px;
+}
+
+.pp7-action{
+    appearance:none;
+    border:1px solid #e6e8f0;
+    background:#fff;
+    border-radius:16px;
+    padding:17px;
+    text-align:left;
+    cursor:pointer;
+    transition:
+        transform .16s ease,
+        box-shadow .16s ease,
+        border-color .16s ease;
+}
+
+.pp7-action:hover{
+    transform:translateY(-2px);
+    border-color:#cfd3e8;
+    box-shadow:0 12px 28px rgba(25,31,65,.08);
+}
+
+.pp7-action-icon{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:11px;
+    background:#f1f2ff;
+    font-size:19px;
+    margin-bottom:11px;
+}
+
+.pp7-action strong{
+    display:block;
+    color:#20263a;
+    font-size:14px;
+    margin-bottom:4px;
+}
+
+.pp7-action small{
+    display:block;
+    color:#8a91a7;
+    font-size:11px;
+    line-height:1.45;
+}
+
+.pp7-tools{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+}
+
+.pp7-tool{
+    position:relative;
+    appearance:none;
+    border:1px solid #e6e8f0;
+    background:#fff;
+    border-radius:17px;
+    padding:18px;
+    text-align:left;
+    cursor:pointer;
+    transition:
+        transform .16s ease,
+        box-shadow .16s ease,
+        border-color .16s ease;
+}
+
+.pp7-tool:hover{
+    transform:translateY(-2px);
+    border-color:#cdd2ec;
+    box-shadow:0 14px 30px rgba(25,31,65,.08);
+}
+
+.pp7-tool-top{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    margin-bottom:10px;
+}
+
+.pp7-tool-icon{
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:#f3f4ff;
+    font-size:19px;
+    flex:0 0 auto;
+}
+
+.pp7-tool strong{
+    display:block;
+    color:#20263a;
+    font-size:14px;
+}
+
+.pp7-tool-category{
+    display:block;
+    margin-top:2px;
+    color:#9298aa;
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.07em;
+}
+
+.pp7-tool p{
+    margin:0;
+    color:#7f879d;
+    font-size:11px;
+    line-height:1.5;
+}
+
+.pp7-recent{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    min-height:42px;
+}
+
+.pp7-recent-empty{
+    color:#9097aa;
+    font-size:12px;
+    padding:11px 0;
+}
+
+.pp7-recent-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    border:1px solid #e5e7ef;
+    background:#fff;
+    border-radius:999px;
+    padding:9px 12px;
+    cursor:pointer;
+    color:#30374c;
+    font-size:12px;
+    font-weight:700;
+}
+
+.pp7-recent-chip:hover{
+    border-color:#cfd3ea;
+    background:#f8f8ff;
+}
+
+.pp7-footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:14px;
+    margin-top:22px;
+}
+
+.pp7-info{
+    border:1px solid #e6e8f0;
+    background:#fff;
+    border-radius:17px;
+    padding:19px;
+}
+
+.pp7-info h4{
+    margin:0 0 7px;
+    font-size:14px;
+}
+
+.pp7-info p{
+    margin:0;
+    color:#81899e;
+    font-size:12px;
+    line-height:1.6;
+}
+
+.pp7-badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:13px;
+}
+
+.pp7-badge{
+    border:1px solid #e4e6ef;
+    background:#f8f9fc;
+    border-radius:999px;
+    padding:7px 10px;
+    font-size:10px;
+    font-weight:800;
+    color:#626a80;
+}
+
+/* Dark mode */
+
+body.pp6-dark .pp7-action,
+body.pp6-dark .pp7-tool,
+body.pp6-dark .pp7-info{
+    background:#171b2d;
+    border-color:#2c3147;
+}
+
+body.pp6-dark .pp7-action:hover,
+body.pp6-dark .pp7-tool:hover{
+    border-color:#454b68;
+    box-shadow:0 14px 30px rgba(0,0,0,.24);
+}
+
+body.pp6-dark .pp7-action strong,
+body.pp6-dark .pp7-tool strong,
+body.pp6-dark .pp7-info h4{
+    color:#f0f2fa;
+}
+
+body.pp6-dark .pp7-action small,
+body.pp6-dark .pp7-tool p,
+body.pp6-dark .pp7-info p,
+body.pp6-dark .pp7-section-title span,
+body.pp6-dark .pp7-recent-empty{
+    color:#949bb1;
+}
+
+body.pp6-dark .pp7-action-icon,
+body.pp6-dark .pp7-tool-icon{
+    background:#232844;
+}
+
+body.pp6-dark .pp7-recent-chip{
+    background:#171b2d;
+    border-color:#30364d;
+    color:#e8ebf5;
+}
+
+body.pp6-dark .pp7-recent-chip:hover{
+    background:#20253b;
+}
+
+body.pp6-dark .pp7-badge{
+    background:#20253a;
+    border-color:#30364d;
+    color:#aeb5c9;
+}
+
+/* Responsive */
+
+@media(max-width:1050px){
+    .pp7-actions{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .pp7-tools{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+@media(max-width:700px){
+    .pp7-hero{
+        padding:25px 22px;
+        border-radius:18px;
+    }
+
+    .pp7-hero h1{
+        font-size:25px;
+    }
+
+    .pp7-actions,
+    .pp7-tools,
+    .pp7-footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+</head>
+<body><div class="app">
+<aside class="sidebar"><div class="brand">🔒 PrivatePDF Pro<small>Professional PDF toolkit</small></div>
+<div class="navgroup"><div class="navtitle">Organize</div><div class="nav"><button onclick="show('organize',this)">📚 <span>Merge / Split / Pages</span></button><button onclick="show('edit',this)">✏️ <span>Edit & Layout</span></button></div></div>
+<div class="navgroup"><div class="navtitle">Optimize</div><div class="nav"><button onclick="show('optimize',this)">⚡ <span>Compress / Resize</span></button><button onclick="show('imagestudio',this)">🖼️ <span>Image Studio</span></button><button onclick="show('convert',this)">🔄 <span>Convert</span></button></div></div>
+<div class="navgroup"><div class="navtitle">Security</div><div class="nav"><button onclick="show('security',this)">🛡️ <span>Protect / Unlock</span></button><button onclick="show('privacy',this)">🔐 <span>Privacy</span></button></div></div>
+<div class="navgroup"><div class="navtitle">Advanced</div><div class="nav"><button onclick="show('advanced',this)">🧰 <span>Advanced tools</span></button></div></div></aside>
+<section class="main"><header class="topbar"><strong id="title">Organize</strong><span class="badge">● Temporary processing only</span></header><main class="content">
+<section class="hero"><div><h1>Powerful PDFs.<br>Private by design.</h1><p>Professional controls for everyday PDF work — with the same core tools you already have, now presented with a cleaner, more precise workflow.</p></div><div class="shield">🛡️</div></section>
+
+
+<div id="pp6GlobalToolbar" class="pp6-topbar">
+
+    <div class="pp6-brand">
+
+        <div class="pp6-brand-mark">
+            P
+        </div>
+
+        <span class="pp6-brand-text">
+            PrivatePDF Pro
+        </span>
+
+    </div>
+
+    <div class="pp6-search">
+
+        <span class="pp6-search-icon">
+            &#128269;
+        </span>
+
+        <input
+            id="pp6GlobalSearch"
+            type="search"
+            autocomplete="off"
+            placeholder="Search tools, PDF features..."
+            aria-label="Search tools"
+        >
+
+        <div
+            id="pp6SearchHint"
+            class="pp6-search-hint"
+        >
+            <span class="pp6-key">
+                Ctrl
+            </span>
+
+            <span class="pp6-key">
+                K
+            </span>
+        </div>
+
+        <button
+            id="pp6SearchClear"
+            class="pp6-clear"
+            type="button"
+            aria-label="Clear search"
+        >
+            &#10005;
+        </button>
+
+        <div
+            id="pp6SearchResults"
+            class="pp6-results"
+        ></div>
+
+    </div>
+
+    <button
+        id="pp6ThemeToggle"
+        class="pp6-theme"
+        type="button"
+        aria-label="Toggle theme"
+        title="Toggle light and dark mode"
+    >
+        &#127769;
+    </button>
+
+</div>
+
+<section id="organize" class="section"><h2>Organize PDFs</h2><p>Arrange pages exactly the way you need.</p><div class="grid">
+<div class="card"><h3>Merge PDF</h3><p>Combine multiple PDFs in selected order.</p><div class="drop"><input id="mergeFiles" type="file" multiple accept=".pdf"></div><button class="primary" onclick="merge()">Merge PDFs</button></div>
+<div class="card"><h3>Split / Extract</h3><p>Extract pages using ranges such as 1,3,5-8.</p><input id="pagesFile" type="file" accept=".pdf"><input id="pagesSpec" placeholder="Pages: 1,3,5-8"><button class="primary" onclick="pageOp('extract')">Extract Pages</button></div>
+<div class="card"><h3>Delete Pages</h3><p>Remove selected pages from a new copy.</p><input id="delFile" type="file" accept=".pdf"><input id="delSpec" placeholder="Pages: 2,4-6"><button class="primary" onclick="pageOp2('delete')">Delete Pages</button></div>
+<div class="card"><h3>Rearrange Pages</h3><p>Set an exact new page order.</p><input id="reorderFile" type="file" accept=".pdf"><input id="reorderSpec" placeholder="Order: 3,1,2,5,4"><button class="primary" onclick="pageOp3('reorder')">Reorder Pages</button></div>
+</div></section>
+
+<section id="edit" class="section"><h2>Edit & Layout</h2><p>Fine-tune page geometry, numbering and visual overlays.</p><div class="grid">
+<div class="card"><h3>Rotate PDF</h3><p>Rotate every page in 90° increments.</p><input id="rotFile" type="file" accept=".pdf"><select id="degrees"><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select><button class="primary" onclick="rotate()">Rotate</button></div>
+<div class="card"><h3>Resize Pages</h3><p>Fit pages to standard paper sizes.</p><input id="resizeFile" type="file" accept=".pdf"><div class="row"><select id="paper"><option>A4</option><option>A3</option><option>Letter</option><option>Legal</option></select><select id="orient"><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div><button class="primary" onclick="resizePDF()">Resize</button></div>
+<div class="card"><h3>Crop Margins</h3><p>Trim equal margins from every page.</p><input id="cropFile" type="file" accept=".pdf"><input id="margin" type="number" value="20" min="0" max="300" placeholder="Margin in points"><button class="primary" onclick="crop()">Crop</button></div>
+<div class="card"><h3>Page Numbers</h3><p>Add sequential page numbers.</p><input id="numFile" type="file" accept=".pdf"><input id="startNum" type="number" value="1" min="1"><button class="primary" onclick="numbers()">Add Page Numbers</button></div>
+
+<div class="card"><h3>Watermark</h3><p>Word-style controls: size, opacity, color, angle, position, bold, outline and tiled mode.</p><input id="wmFile" type="file" accept=".pdf"><input id="wmText" placeholder="CONFIDENTIAL" value="CONFIDENTIAL">
+<label class="label">Font size</label><div class="range"><input id="wmSize" type="range" min="8" max="160" value="42" oninput="$('wmSizeOut').value=this.value"><output id="wmSizeOut">42</output></div>
+<label class="label">Opacity</label><div class="range"><input id="wmOpacity" type="range" min="5" max="100" value="25" oninput="$('wmOpacityOut').value=this.value+'%'"><output id="wmOpacityOut">25%</output></div>
+<div class="row"><div><label class="label">Color</label><input id="wmColor" type="color" value="#777777"></div><div><label class="label">Angle</label><input id="wmAngle" type="number" value="45" min="0" max="359"></div></div>
+<label class="label">Position</label><select id="wmPosition"><option value="top-left">Top left</option><option value="top-center">Top center</option><option value="top-right">Top right</option><option value="center-left">Center left</option><option value="center" selected>Center</option><option value="center-right">Center right</option><option value="bottom-left">Bottom left</option><option value="bottom-center">Bottom center</option><option value="bottom-right">Bottom right</option></select>
+<div class="row3"><label><input id="wmTiled" type="checkbox"> Tiled</label><label><input id="wmBold" type="checkbox"> Bold</label><label><input id="wmOutline" type="checkbox"> Outline</label></div>
+<div class="preview"><div id="wmPreview" class="wm-preview">CONFIDENTIAL</div></div><button class="primary" onclick="watermark()">Add Watermark</button></div>
+</div></section>
+
+<section id="optimize" class="section"><h2>Optimize</h2><p>Reduce size or prepare documents for printing.</p><div class="grid">
+<div class="card"><h3>Compress PDF</h3><p>Choose a size/quality profile.</p><input id="compFile" type="file" accept=".pdf"><select id="dpi"><option value="80">Small — 80 DPI</option><option value="110" selected>Balanced — 110 DPI</option><option value="160">Quality — 160 DPI</option></select><label class="label">JPEG quality</label><input id="quality" type="range" min="25" max="95" value="70" oninput="$('qualityOut').value=this.value"><div class="note">Quality: <output id="qualityOut">70</output></div><button class="primary" onclick="compress()">Compress PDF</button></div>
+<div class="card"><h3>Grayscale PDF</h3><p>Create a print-friendly grayscale copy.</p><input id="grayFile" type="file" accept=".pdf"><button class="primary" onclick="simpleFile('/api/grayscale','grayFile','Grayscale.pdf')">Convert to Grayscale</button></div>
+<div class="card"><h3>Metadata Cleaner</h3><p>Remove common PDF metadata.</p><input id="metaFile" type="file" accept=".pdf"><button class="primary" onclick="metadata()">Remove Metadata</button></div>
+</div></section>
+
+<section id="convert" class="section"><h2>Convert</h2><p>Keep conversions local where the required engine is installed.</p><div class="grid">
+<div class="card"><h3>PDF → JPG</h3><p>Convert all pages to JPG images in a ZIP.</p><input id="jpgFile" type="file" accept=".pdf"><button class="primary" onclick="simpleFile('/api/pdf-to-jpg','jpgFile','PDF_Images.zip')">Convert</button></div>
+<div class="card"><h3>Images → PDF</h3><p>Combine JPG/PNG images into a PDF.</p><input id="imgFiles" type="file" multiple accept="image/jpeg,image/png"><button class="primary" onclick="imagesPDF()">Create PDF</button></div>
+<div class="card"><h3>PDF → Text</h3><p>Extract selectable text.</p><input id="txtFile" type="file" accept=".pdf"><button class="primary" onclick="simpleFile('/api/text','txtFile','Extracted_Text.txt')">Extract Text</button></div>
+<div class="card"><h3>PDF → Markdown</h3><p>Turn page text into Markdown.</p><input id="mdFile" type="file" accept=".pdf"><button class="primary" onclick="simpleFile('/api/markdown','mdFile','Document.md')">Export Markdown</button></div>
+<div class="card"><h3>Word / Excel / PPT → PDF</h3><p>Uses LibreOffice when installed.</p><input id="officeFile" type="file" accept=".doc,.docx,.xls,.xlsx,.ppt,.pptx,.odt,.ods,.odp"><button class="primary" onclick="officePDF()">Convert to PDF</button><div class="note">Requires LibreOffice.</div></div>
+<div class="card"><h3>PDF → Word / Excel / PPT</h3><p>Experimental conversion through LibreOffice.</p><input id="pdfOffice" type="file" accept=".pdf"><select id="officeKind"><option value="docx">Word (.docx)</option><option value="xlsx">Excel (.xlsx)</option><option value="pptx">PowerPoint (.pptx)</option></select><button class="primary" onclick="pdfOffice()">Convert</button></div>
+</div></section>
+
+<section id="security" class="section"><h2>Security</h2><p>Basic document protection and authorized decryption.</p><div class="grid">
+<div class="card"><h3>Password Protect</h3><p>Encrypt a PDF with a password.</p><input id="protectFile" type="file" accept=".pdf"><input id="protectPass" type="password" placeholder="Password"><button class="primary" onclick="protect()">Protect PDF</button></div>
+<div class="card"><h3>Unlock PDF</h3><p>Decrypt only when you know the password and are authorized.</p><input id="unlockFile" type="file" accept=".pdf"><input id="unlockPass" type="password" placeholder="Known password"><button class="primary" onclick="unlock()">Unlock PDF</button></div></div></section>
+
+
+<section id="imagestudio" class="section"><h2>Image Studio</h2><p>Professional local image resizing — pixels, percentage, crop, social presets, print sizes, compression and batch export.</p>
+<div class="tabs"><button class="tab active" onclick="imgTab('imgResizeTab',this)">Resize</button><button class="tab" onclick="imgTab('imgSocialTab',this)">Social presets</button><button class="tab" onclick="imgTab('imgPrintTab',this)">Print & DPI</button><button class="tab" onclick="imgTab('imgCompressTab',this)">Compression</button></div>
+<div class="card"><div id="imgResizeTab" class="imgtab"><div class="studio-grid"><div><div id="imgDrop" class="img-drop"><b>Drop images here</b><div class="note">JPG, PNG, WebP, GIF, BMP, TIFF • multiple files supported</div><input id="imgResizeFiles" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif,image/bmp,image/tiff"></div><div id="imgFilesPreview" class="img-files"></div></div><div><div class="row"><div><label class="label">Resize mode</label><select id="imgMode"><option value="pixels">Exact pixels</option><option value="percent">Percentage</option></select></div><div><label class="label">Fit</label><select id="imgFit"><option value="contain">Contain</option><option value="cover">Cover / crop</option><option value="stretch">Stretch</option></select></div></div><div id="pixelControls" class="row"><div><label class="label">Width (px)</label><input id="imgWidth" type="number" min="1" max="12000" value="1920"></div><div><label class="label">Height (px)</label><input id="imgHeight" type="number" min="1" max="12000" value="1080"></div></div><div id="percentControls" class="hidden"><label class="label">Scale percentage</label><div class="range"><input id="imgPercent" type="range" min="1" max="500" value="100" oninput="$('imgPercentOut').value=this.value+'%'"/><output id="imgPercentOut">100%</output></div></div><div class="checkrow"><label><input id="imgNoEnlarge" type="checkbox"> Don't enlarge smaller images</label><label><input id="imgCrop" type="checkbox"> Center crop to exact size</label></div><div class="row"><div><label class="label">Output</label><select id="imgFormat"><option value="original">Keep original</option><option value="jpg">JPG</option><option value="png">PNG</option><option value="webp">WebP</option></select></div><div><label class="label">Background</label><input id="imgBg" type="color" value="#ffffff"></div></div><div class="statbar"><div class="stat"><b id="imgCount">0</b><span>Images</span></div><div class="stat"><b id="imgOriginal">—</b><span>Original</span></div><div class="stat"><b id="imgResult">—</b><span>Result</span></div><div class="stat"><b id="imgRatio">—</b><span>Aspect</span></div></div><button class="primary" onclick="resizeImages()">Resize & Download</button></div></div></div>
+<div id="imgSocialTab" class="imgtab hidden"><div class="subcard"><h3>Social presets</h3><p>Select a platform target; dimensions can still be adjusted before export.</p><div class="row"><select id="socialPreset" onchange="applyImagePreset()"><option value="">Choose a preset…</option><option value="1080x1080">Instagram Post — 1080×1080</option><option value="1080x1350">Instagram Portrait — 1080×1350</option><option value="1080x1920">Instagram / WhatsApp Story — 1080×1920</option><option value="1200x630">Facebook / Link Preview — 1200×630</option><option value="1280x720">YouTube Thumbnail — 1280×720</option><option value="1500x500">X Header — 1500×500</option><option value="1200x627">LinkedIn Post — 1200×627</option><option value="1000x1500">Pinterest Pin — 1000×1500</option><option value="1080x1080">WhatsApp Square — 1080×1080</option></select><button class="secondary" onclick="show('imagestudio')">Use Resize tab</button></div></div></div>
+<div id="imgPrintTab" class="imgtab hidden"><div class="subcard"><h3>Print & DPI presets</h3><p>Sets pixel dimensions plus DPI metadata for print workflows.</p><div class="row"><select id="printPreset" onchange="applyPrintPreset()"><option value="">Choose paper…</option><option value="2480x3508x300">A4 @ 300 DPI — 2480×3508</option><option value="1654x2339x200">A4 @ 200 DPI — 1654×2339</option><option value="3508x4961x300">A3 @ 300 DPI — 3508×4961</option><option value="2550x3300x300">Letter @ 300 DPI — 2550×3300</option><option value="2550x4200x300">Legal @ 300 DPI — 2550×4200</option></select><input id="imgDpi" type="number" min="36" max="1200" value="300"></div></div></div>
+<div id="imgCompressTab" class="imgtab hidden"><div class="subcard"><h3>Compression & file size</h3><p>JPEG/WebP quality or an approximate target size. PNG uses lossless optimization.</p><div class="row"><div><label class="label">Quality</label><div class="range"><input id="imgQuality" type="range" min="10" max="100" value="88" oninput="$('imgQualityOut').value=this.value"><output id="imgQualityOut">88</output></div></div><div><label class="label">Target size (KB, optional)</label><input id="imgTargetKB" type="number" min="0" max="50000" value="0" placeholder="e.g. 500"></div></div><div class="note">Target size is best-effort for JPG/WebP; exact size is not guaranteed.</div></div></div></div></section>
+<section id="advanced" class="section"><h2>Advanced</h2><p>Operational checks and product architecture information.</p><div class="grid"><div class="card"><h3>Health Check</h3><p>Verify that the API is responding.</p><button class="primary" onclick="health()">Run Health Check</button></div><div class="card"><h3>Feature Test</h3><p>Run the bundled automated backend smoke test from your terminal.</p><div class="note">Command: <b>python test_all_features.py</b></div></div></div></section>
+<section id="privacy" class="section"><h2>Privacy Architecture</h2><div class="privacy"><div><b>🚫 No document database</b><span>No persistent document database is used by this build.</span></div><div><b>⏱️ Temporary jobs</b><span>Files are processed in temporary job directories and cleaned on startup.</span></div><div><b>🔒 Minimal collection</b><span>No accounts, tracking profiles or document indexes are created by this starter.</span></div></div><p class="note">For a future public deployment, the exact retention/deletion policy should be enforced technically and stated clearly.</p></section>
+</main></section></div><div id="status"></div>
+<script>
+const $=id=>document.getElementById(id);function show(id,btn){document.querySelectorAll('.section').forEach(x=>x.style.display='none');$(id).style.display='block';$('title').textContent=id[0].toUpperCase()+id.slice(1);document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function st(x){const s=$('status');s.textContent=x;s.style.display='block';clearTimeout(window.__st);window.__st=setTimeout(()=>s.style.display='none',3500)}
+async function send(url,fd,name){st('Processing…');try{const r=await fetch(url,{method:'POST',body:fd});if(!r.ok){let t=await r.text();throw new Error(t)}const blob=await r.blob();const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);st('Done — downloaded')}catch(e){st('Error: '+e.message)}}
+function one(id){return $(id).files[0]}function simpleFile(url,id,name){const f=one(id);if(!f)return st('Select a file');let fd=new FormData();fd.append('file',f);send(url,fd,name)}
+function merge(){const fs=[...$('mergeFiles').files];if(!fs.length)return st('Select PDFs');let fd=new FormData();fs.forEach(f=>fd.append('files',f));send('/api/merge',fd,'Merged.pdf')}
+function pageSend(fileId,specId,action){const f=one(fileId),p=$(specId).value;if(!f||!p)return st('Select PDF and pages');let fd=new FormData();fd.append('file',f);fd.append('pages',p);fd.append('action',action);send('/api/pages',fd,'Pages_Result.pdf')}function pageOp(a){pageSend('pagesFile','pagesSpec',a)}function pageOp2(a){pageSend('delFile','delSpec',a)}function pageOp3(a){pageSend('reorderFile','reorderSpec',a)}
+function rotate(){let f=one('rotFile');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('degrees',$('degrees').value);send('/api/rotate',fd,'Rotated.pdf')}
+function resizePDF(){let f=one('resizeFile');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('size',$('paper').value);fd.append('orientation',$('orient').value);send('/api/resize',fd,'Resized.pdf')}
+function crop(){let f=one('cropFile');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('margin',$('margin').value);send('/api/crop',fd,'Cropped.pdf')}
+function numbers(){let f=one('numFile');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('start',$('startNum').value);send('/api/numbers',fd,'Numbered.pdf')}
+function watermark(){let f=one('wmFile');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('text',$('wmText').value);fd.append('size',$('wmSize').value);fd.append('opacity',Number($('wmOpacity').value)/100);fd.append('angle',$('wmAngle').value);fd.append('color',$('wmColor').value);fd.append('position',$('wmPosition').value);fd.append('tiled',$('wmTiled').checked);fd.append('bold',$('wmBold').checked);fd.append('outline',$('wmOutline').checked);send('/api/watermark',fd,'Watermarked.pdf')}
+function compress(){let f=one('compFile');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('dpi',$('dpi').value);fd.append('quality',$('quality').value);send('/api/compress',fd,'Compressed.pdf')}
+function metadata(){simpleFile('/api/metadata','metaFile','Metadata_Result.pdf')}function protect(){let f=one('protectFile');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('password',$('protectPass').value);send('/api/protect',fd,'Protected.pdf')}function unlock(){let f=one('unlockFile');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('password',$('unlockPass').value);send('/api/unlock',fd,'Unlocked.pdf')}
+function imagesPDF(){let fs=[...$('imgFiles').files];if(!fs.length)return st('Select images');let fd=new FormData();fs.forEach(f=>fd.append('files',f));send('/api/images-to-pdf',fd,'Images_to_PDF.pdf')}function officePDF(){simpleFile('/api/office-to-pdf','officeFile','Converted.pdf')}function pdfOffice(){let f=one('pdfOffice');if(!f)return st('Select PDF');let fd=new FormData();fd.append('file',f);fd.append('kind',$('officeKind').value);send('/api/pdf-to-office',fd,'Converted_Office_File')}
+
+function imgTab(id,btn){document.querySelectorAll('.imgtab').forEach(x=>x.classList.add('hidden'));$(id).classList.remove('hidden');document.querySelectorAll('.tabs .tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}
+function imageFiles(){return [...($('imgResizeFiles').files||[])]}
+function renderImagePreview(){const fs=imageFiles(), box=$('imgFilesPreview');box.innerHTML='';let total=0,firstW=0,firstH=0;fs.forEach((f,i)=>{total+=f.size;const url=URL.createObjectURL(f);const d=document.createElement('div');d.className='img-thumb';d.innerHTML='<img src="'+url+'"><div class="img-meta">'+f.name+'</div><div class="img-meta">'+(f.size/1024).toFixed(1)+' KB</div>';box.appendChild(d);const im=new Image();im.onload=()=>{if(i===0){firstW=im.naturalWidth;firstH=im.naturalHeight;updateImageStats(firstW,firstH,total,fs.length)}URL.revokeObjectURL(url)};im.src=url});if(!fs.length){$('imgCount').textContent='0';$('imgOriginal').textContent='—';$('imgRatio').textContent='—'}}
+function updateImageStats(w,h,total,count){$('imgCount').textContent=count;$('imgOriginal').textContent=w+'×'+h;$('imgRatio').textContent=(w/h).toFixed(2)+' : 1';const mode=$('imgMode').value;if(mode==='pixels')$('imgResult').textContent=$('imgWidth').value+'×'+$('imgHeight').value;else $('imgResult').textContent=$('imgPercent').value+'%'}
+function applyImagePreset(){const v=$('socialPreset').value;if(!v)return;const [w,h]=v.split('x').map(Number);$('imgMode').value='pixels';$('pixelControls').classList.remove('hidden');$('percentControls').classList.add('hidden');$('imgWidth').value=w;$('imgHeight').value=h;updateImageStats(w,h,0,imageFiles().length);show('imagestudio');}
+function applyPrintPreset(){const v=$('printPreset').value;if(!v)return;const [w,h,d]=v.split('x').map(Number);$('imgMode').value='pixels';$('imgWidth').value=w;$('imgHeight').value=h;$('imgDpi').value=d;$('pixelControls').classList.remove('hidden');$('percentControls').classList.add('hidden');}
+function imageModeChanged(){const p=$('imgMode').value==='percent';$('pixelControls').classList.toggle('hidden',p);$('percentControls').classList.toggle('hidden',!p)}
+function resizeImages(){const fs=imageFiles();if(!fs.length)return st('Select at least one image');let fd=new FormData();fs.forEach(f=>fd.append('files',f));fd.append('mode',$('imgMode').value);fd.append('width',$('imgWidth').value);fd.append('height',$('imgHeight').value);fd.append('percent',$('imgPercent').value);fd.append('fit',$('imgFit').value);fd.append('crop',$('imgCrop').checked);fd.append('quality',$('imgQuality').value);fd.append('output_format',$('imgFormat').value);fd.append('dpi',$('imgDpi').value);fd.append('background',$('imgBg').value);fd.append('no_enlarge',$('imgNoEnlarge').checked);fd.append('target_kb',$('imgTargetKB').value);const name=fs.length>1?'Resized_Images.zip':'Resized_Image';send('/api/image-resize',fd,name)}
+
+async function health(){try{const r=await fetch('/api/health');const j=await r.json();st(j.ok?'API healthy':'API error')}catch(e){st('API unreachable')}}
+function previewWM(){const p=$('wmPreview');p.textContent=$('wmText').value||'CONFIDENTIAL';p.style.fontSize=Math.min(42,Math.max(12,Number($('wmSize').value)/2))+'px';p.style.opacity=Number($('wmOpacity').value)/100;p.style.color=$('wmColor').value;p.style.transform='rotate('+(-Number($('wmAngle').value))+'deg)';p.style.fontWeight=$('wmBold').checked?'800':'600'}['wmText','wmSize','wmOpacity','wmColor','wmAngle','wmBold'].forEach(id=>$(id).addEventListener('input',previewWM));previewWM();$('imgResizeFiles').addEventListener('change',renderImagePreview);$('imgMode').addEventListener('change',imageModeChanged);['imgWidth','imgHeight','imgPercent'].forEach(id=>$(id).addEventListener('input',()=>{const fs=imageFiles();if(fs[0]){const im=new Image();im.onload=()=>updateImageStats(im.naturalWidth,im.naturalHeight,0,fs.length);im.src=URL.createObjectURL(fs[0])}}));const dz=$('imgDrop');['dragenter','dragover'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.add('drag')}));['dragleave','drop'].forEach(e=>dz.addEventListener(e,ev=>{ev.preventDefault();dz.classList.remove('drag')}));dz.addEventListener('drop',ev=>{if(ev.dataTransfer.files.length){$('imgResizeFiles').files=ev.dataTransfer.files;renderImagePreview()}});previewWM();show('organize');
+</script>
+<script id="professional-workspace-js">
+/* ===== PROFESSIONAL FILE WORKSPACE ===== */
+
+window.PPDFWorkspace = {
+  files: [],
+
+  formatBytes(bytes){
+    if(!bytes) return "0 B";
+    const units=["B","KB","MB","GB"];
+    const i=Math.floor(Math.log(bytes)/Math.log(1024));
+    return (bytes/Math.pow(1024,i)).toFixed(i?1:0)+" "+units[i];
+  },
+
+  escape(str){
+    return String(str).replace(/[&<>"']/g,m=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[m]));
+  },
+
+  add(input){
+    const incoming=[...input.files];
+
+    incoming.forEach(file=>{
+      const exists=this.files.some(
+        x=>x.name===file.name &&
+        x.size===file.size &&
+        x.lastModified===file.lastModified
+      );
+
+      if(!exists) this.files.push(file);
+    });
+
+    this.render();
+  },
+
+  remove(index){
+    this.files.splice(index,1);
+    this.render();
+  },
+
+  clear(){
+    this.files=[];
+    this.render();
+  },
+
+  render(){
+    const grid=document.getElementById("ppWorkspaceFiles");
+    const count=document.getElementById("ppWorkspaceCount");
+    if(!grid) return;
+
+    grid.innerHTML="";
+
+    if(!this.files.length){
+      grid.innerHTML='<div class="workspace-empty">No files added yet</div>';
+    }else{
+      this.files.forEach((file,index)=>{
+        const card=document.createElement("div");
+        card.className="workspace-file";
+
+        const thumb=document.createElement("div");
+        thumb.className="workspace-thumb";
+
+        const isImage=file.type.startsWith("image/");
+        const isPdf=file.type==="application/pdf" ||
+                    file.name.toLowerCase().endsWith(".pdf");
+
+        if(isImage){
+          const img=document.createElement("img");
+          img.src=URL.createObjectURL(file);
+          thumb.appendChild(img);
+        }else{
+          thumb.textContent=isPdf ? "📄" : "📁";
+        }
+
+        const meta=document.createElement("div");
+        meta.className="workspace-meta";
+
+        const name=document.createElement("div");
+        name.className="workspace-name";
+        name.title=file.name;
+        name.textContent=file.name;
+
+        const info=document.createElement("div");
+        info.className="workspace-info";
+        info.textContent=this.formatBytes(file.size);
+
+        meta.appendChild(name);
+        meta.appendChild(info);
+
+        const remove=document.createElement("button");
+        remove.className="workspace-remove";
+        remove.type="button";
+        remove.title="Remove file";
+        remove.textContent="✕";
+        remove.onclick=()=>this.remove(index);
+
+        card.appendChild(thumb);
+        card.appendChild(meta);
+        card.appendChild(remove);
+
+        grid.appendChild(card);
+      });
+    }
+
+    if(count){
+      count.textContent=
+        this.files.length+
+        (this.files.length===1?" file":" files")+
+        " • "+
+        this.formatBytes(this.files.reduce((a,f)=>a+f.size,0));
+    }
+  }
+};
+
+function ppWorkspaceFiles(input){
+  PPDFWorkspace.add(input);
+  input.value="";
+}
+
+function ppWorkspaceClear(){
+  PPDFWorkspace.clear();
+}
+
+function ppWorkspaceDrop(e){
+  e.preventDefault();
+  const zone=document.getElementById("ppWorkspaceDrop");
+  if(zone) zone.classList.remove("dragover");
+
+  if(e.dataTransfer && e.dataTransfer.files.length){
+    PPDFWorkspace.add(e.dataTransfer);
+  }
+}
+
+function ppWorkspaceDrag(e){
+  e.preventDefault();
+  const zone=document.getElementById("ppWorkspaceDrop");
+  if(zone) zone.classList.add("dragover");
+}
+
+function ppWorkspaceLeave(e){
+  e.preventDefault();
+  const zone=document.getElementById("ppWorkspaceDrop");
+  if(zone) zone.classList.remove("dragover");
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  PPDFWorkspace.render();
+});
+</script>
+
+
+<!-- ===== ADVANCED SMART FILE QUEUE ===== -->
+<div id="ppSmartQueue" class="pp-smart-queue hidden">
+  <div class="pp-queue-head">
+    <div>
+      <div class="pp-queue-title">Smart File Queue</div>
+      <div class="pp-queue-sub">Files ready for processing</div>
+    </div>
+
+    <div class="pp-queue-head-actions">
+      <button type="button" class="secondary" onclick="PPQueue.addMore()">
+        + Add files
+      </button>
+      <button type="button" class="secondary" onclick="PPQueue.clear()">
+        Clear
+      </button>
+    </div>
+  </div>
+
+  <div id="ppQueueDrop" class="pp-queue-drop"
+       onclick="PPQueue.openPicker()"
+       ondragover="PPQueue.dragOver(event)"
+       ondragleave="PPQueue.dragLeave(event)"
+       ondrop="PPQueue.drop(event)">
+    <div class="pp-queue-drop-icon">＋</div>
+    <div class="pp-queue-drop-title">Drop more files here</div>
+    <div class="pp-queue-drop-text">
+      Add files without losing your current queue
+    </div>
+  </div>
+
+  <input
+    id="ppQueueInput"
+    type="file"
+    multiple
+    hidden
+    onchange="PPQueue.receive(this.files)"
+  >
+
+  <div id="ppQueueItems" class="pp-queue-items"></div>
+
+  <div class="pp-queue-footer">
+    <span id="ppQueueSummary">0 files</span>
+    <span id="ppQueueSize">0 B</span>
+  </div>
+</div>
+
+
+<script id="advanced-smart-queue-js">
+
+window.PPQueue = {
+
+  files: [],
+
+  formatBytes(bytes){
+    if(!bytes) return "0 B";
+
+    const units=["B","KB","MB","GB"];
+    const i=Math.floor(Math.log(bytes)/Math.log(1024));
+
+    return (
+      bytes / Math.pow(1024,i)
+    ).toFixed(i ? 1 : 0) + " " + units[i];
+  },
+
+  isDuplicate(file){
+    return this.files.some(x =>
+      x.name === file.name &&
+      x.size === file.size &&
+      x.lastModified === file.lastModified
+    );
+  },
+
+  receive(fileList){
+
+    const incoming=[...fileList];
+
+    incoming.forEach(file=>{
+      if(!this.isDuplicate(file)){
+        this.files.push(file);
+      }
+    });
+
+    this.render();
+  },
+
+  addMore(){
+    const input=document.getElementById("ppQueueInput");
+    if(input) input.click();
+  },
+
+  openPicker(){
+    this.addMore();
+  },
+
+  dragOver(event){
+    event.preventDefault();
+
+    const zone=document.getElementById("ppQueueDrop");
+
+    if(zone){
+      zone.classList.add("dragover");
+    }
+  },
+
+  dragLeave(event){
+    event.preventDefault();
+
+    const zone=document.getElementById("ppQueueDrop");
+
+    if(zone){
+      zone.classList.remove("dragover");
+    }
+  },
+
+  drop(event){
+    event.preventDefault();
+
+    const zone=document.getElementById("ppQueueDrop");
+
+    if(zone){
+      zone.classList.remove("dragover");
+    }
+
+    if(event.dataTransfer?.files?.length){
+      this.receive(event.dataTransfer.files);
+    }
+  },
+
+  remove(index){
+
+    if(index < 0 || index >= this.files.length){
+      return;
+    }
+
+    this.files.splice(index,1);
+
+    this.render();
+  },
+
+  clear(){
+
+    this.files=[];
+
+    this.render();
+  },
+
+  show(){
+
+    const box=document.getElementById("ppSmartQueue");
+
+    if(box){
+      box.classList.remove("hidden");
+    }
+
+    this.render();
+  },
+
+  render(){
+
+    const box=document.getElementById("ppSmartQueue");
+    const items=document.getElementById("ppQueueItems");
+    const summary=document.getElementById("ppQueueSummary");
+    const size=document.getElementById("ppQueueSize");
+
+    if(!box || !items){
+      return;
+    }
+
+    if(!this.files.length){
+
+      box.classList.add("hidden");
+
+      items.innerHTML="";
+
+      if(summary) summary.textContent="0 files";
+      if(size) size.textContent="0 B";
+
+      return;
+    }
+
+    box.classList.remove("hidden");
+
+    items.innerHTML="";
+
+    let total=0;
+
+    this.files.forEach((file,index)=>{
+
+      total += file.size;
+
+      const row=document.createElement("div");
+      row.className="pp-queue-item";
+
+      const number=document.createElement("div");
+      number.className="pp-queue-number";
+      number.textContent=index+1;
+
+      const thumb=document.createElement("div");
+      thumb.className="pp-queue-thumb";
+
+      if(file.type.startsWith("image/")){
+
+        const img=document.createElement("img");
+
+        img.src=URL.createObjectURL(file);
+
+        thumb.appendChild(img);
+
+      }else{
+
+        thumb.textContent =
+          file.type==="application/pdf" ||
+          file.name.toLowerCase().endsWith(".pdf")
+          ? "📄"
+          : "📁";
+      }
+
+      const info=document.createElement("div");
+      info.className="pp-queue-info";
+
+      const name=document.createElement("div");
+      name.className="pp-queue-name";
+      name.title=file.name;
+      name.textContent=file.name;
+
+      const meta=document.createElement("div");
+      meta.className="pp-queue-meta";
+
+      meta.textContent =
+        this.formatBytes(file.size) +
+        " • " +
+        (file.type || "unknown");
+
+      info.appendChild(name);
+      info.appendChild(meta);
+
+      const remove=document.createElement("button");
+      remove.type="button";
+      remove.className="pp-queue-remove";
+      remove.title="Remove";
+      remove.textContent="✕";
+
+      remove.onclick=()=>{
+        this.remove(index);
+      };
+
+      row.appendChild(number);
+      row.appendChild(thumb);
+      row.appendChild(info);
+      row.appendChild(remove);
+
+      items.appendChild(row);
+    });
+
+    if(summary){
+      summary.textContent =
+        this.files.length +
+        (this.files.length===1 ? " file" : " files");
+    }
+
+    if(size){
+      size.textContent=this.formatBytes(total);
+    }
+  }
+};
+
+</script>
+
+
+<!-- ===== ADVANCED PDF MERGE WORKSPACE ===== -->
+<div id="ppPdfWorkspace" class="pp-pdf-workspace">
+
+  <div class="pp-pdf-head">
+    <div>
+      <div class="pp-pdf-title">PDF Merge Workspace</div>
+      <div class="pp-pdf-sub">
+        Arrange your documents before merging
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="pp-pdf-close"
+      onclick="PPPDFWorkspace.close()"
+      title="Close workspace">
+      ✕
+    </button>
+  </div>
+
+  <div class="pp-pdf-tools">
+
+    <button type="button" onclick="PPPDFWorkspace.moveTop()">
+      ⬆ Top
+    </button>
+
+    <button type="button" onclick="PPPDFWorkspace.moveUp()">
+      ↑ Up
+    </button>
+
+    <button type="button" onclick="PPPDFWorkspace.moveDown()">
+      ↓ Down
+    </button>
+
+    <button type="button" onclick="PPPDFWorkspace.moveBottom()">
+      ⬇ Bottom
+    </button>
+
+    <button type="button" onclick="PPPDFWorkspace.addMore()">
+      + Add
+    </button>
+
+    <button type="button" onclick="PPPDFWorkspace.clear()">
+      Clear
+    </button>
+
+  </div>
+
+  <div
+    id="ppPdfDrop"
+    class="pp-pdf-drop"
+    ondragover="PPPDFWorkspace.dragOver(event)"
+    ondragleave="PPPDFWorkspace.dragLeave(event)"
+    ondrop="PPPDFWorkspace.drop(event)"
+  >
+    Drop PDF files here to add them
+  </div>
+
+  <div id="ppPdfList" class="pp-pdf-list"></div>
+
+  <div class="pp-pdf-footer">
+
+    <span id="ppPdfSummary" class="pp-pdf-summary">
+      0 files
+    </span>
+
+    <span class="pp-pdf-ready">
+      ● Ready
+    </span>
+
+  </div>
+
+</div>
+
+<input
+  id="ppPdfExtraInput"
+  type="file"
+  multiple
+  accept=".pdf"
+  hidden
+>
+
+
+<script id="pdf-workspace-upgrade-js">
+
+window.PPPDFWorkspace = {
+
+  files: [],
+  selected: -1,
+  dragIndex: -1,
+
+  formatBytes(bytes){
+
+    if(!bytes) return "0 B";
+
+    const units=["B","KB","MB","GB"];
+
+    const i=Math.floor(
+      Math.log(bytes)/Math.log(1024)
+    );
+
+    return (
+      bytes / Math.pow(1024,i)
+    ).toFixed(i ? 1 : 0)
+    + " "
+    + units[i];
+  },
+
+  isPDF(file){
+
+    return (
+      file.type === "application/pdf" ||
+      file.name.toLowerCase().endsWith(".pdf")
+    );
+  },
+
+  addFiles(list){
+
+    [...list].forEach(file=>{
+
+      if(!this.isPDF(file)){
+        return;
+      }
+
+      const duplicate=this.files.some(x =>
+        x.name === file.name &&
+        x.size === file.size &&
+        x.lastModified === file.lastModified
+      );
+
+      if(!duplicate){
+        this.files.push(file);
+      }
+    });
+
+    this.selected=this.files.length
+      ? Math.min(
+          this.selected < 0 ? 0 : this.selected,
+          this.files.length-1
+        )
+      : -1;
+
+    this.sync();
+    this.render();
+  },
+
+  open(){
+
+    const box=document.getElementById(
+      "ppPdfWorkspace"
+    );
+
+    if(box){
+      box.classList.add("open");
+    }
+
+    this.render();
+  },
+
+  close(){
+
+    const box=document.getElementById(
+      "ppPdfWorkspace"
+    );
+
+    if(box){
+      box.classList.remove("open");
+    }
+  },
+
+  addMore(){
+
+    const input=document.getElementById(
+      "ppPdfExtraInput"
+    );
+
+    if(input){
+      input.click();
+    }
+  },
+
+  remove(index){
+
+    if(index < 0 || index >= this.files.length){
+      return;
+    }
+
+    this.files.splice(index,1);
+
+    if(this.selected >= this.files.length){
+      this.selected=this.files.length-1;
+    }
+
+    this.sync();
+    this.render();
+  },
+
+  clear(){
+
+    this.files=[];
+
+    this.selected=-1;
+
+    this.sync();
+    this.render();
+  },
+
+  select(index){
+
+    if(index < 0 || index >= this.files.length){
+      return;
+    }
+
+    this.selected=index;
+
+    this.render();
+  },
+
+  swap(a,b){
+
+    if(
+      a < 0 ||
+      b < 0 ||
+      a >= this.files.length ||
+      b >= this.files.length
+    ){
+      return;
+    }
+
+    const temp=this.files[a];
+
+    this.files[a]=this.files[b];
+    this.files[b]=temp;
+
+    this.selected=b;
+
+    this.sync();
+    this.render();
+  },
+
+  moveUp(){
+
+    if(this.selected > 0){
+      this.swap(
+        this.selected,
+        this.selected-1
+      );
+    }
+  },
+
+  moveDown(){
+
+    if(
+      this.selected >= 0 &&
+      this.selected < this.files.length-1
+    ){
+      this.swap(
+        this.selected,
+        this.selected+1
+      );
+    }
+  },
+
+  moveTop(){
+
+    if(this.selected <= 0){
+      return;
+    }
+
+    const f=this.files.splice(
+      this.selected,
+      1
+    )[0];
+
+    this.files.unshift(f);
+
+    this.selected=0;
+
+    this.sync();
+    this.render();
+  },
+
+  moveBottom(){
+
+    if(
+      this.selected < 0 ||
+      this.selected >= this.files.length-1
+    ){
+      return;
+    }
+
+    const f=this.files.splice(
+      this.selected,
+      1
+    )[0];
+
+    this.files.push(f);
+
+    this.selected=this.files.length-1;
+
+    this.sync();
+    this.render();
+  },
+
+  dragStart(index,event){
+
+    this.dragIndex=index;
+
+    if(event.dataTransfer){
+      event.dataTransfer.effectAllowed="move";
+
+      try{
+        event.dataTransfer.setData(
+          "text/plain",
+          String(index)
+        );
+      }catch(_){}
+    }
+
+    event.currentTarget.classList.add("dragging");
+  },
+
+  dragEnd(event){
+
+    event.currentTarget.classList.remove(
+      "dragging"
+    );
+
+    this.dragIndex=-1;
+  },
+
+  dragOverItem(index,event){
+
+    event.preventDefault();
+
+    if(this.dragIndex < 0){
+      return;
+    }
+
+    if(this.dragIndex === index){
+      return;
+    }
+
+    const moved=this.files.splice(
+      this.dragIndex,
+      1
+    )[0];
+
+    this.files.splice(
+      index,
+      0,
+      moved
+    );
+
+    this.dragIndex=index;
+    this.selected=index;
+
+    this.sync();
+    this.render();
+  },
+
+  dragOver(event){
+
+    event.preventDefault();
+
+    const zone=document.getElementById(
+      "ppPdfDrop"
+    );
+
+    if(zone){
+      zone.classList.add("dragover");
+    }
+  },
+
+  dragLeave(event){
+
+    event.preventDefault();
+
+    const zone=document.getElementById(
+      "ppPdfDrop"
+    );
+
+    if(zone){
+      zone.classList.remove("dragover");
+    }
+  },
+
+  drop(event){
+
+    event.preventDefault();
+
+    const zone=document.getElementById(
+      "ppPdfDrop"
+    );
+
+    if(zone){
+      zone.classList.remove("dragover");
+    }
+
+    if(event.dataTransfer?.files?.length){
+      this.addFiles(
+        event.dataTransfer.files
+      );
+    }
+  },
+
+  sync(){
+
+    const input=document.getElementById(
+      "mergeFiles"
+    );
+
+    if(!input){
+      return;
+    }
+
+    try{
+
+      const dt=new DataTransfer();
+
+      this.files.forEach(file=>{
+        dt.items.add(file);
+      });
+
+      input.files=dt.files;
+
+    }catch(error){
+
+      console.warn(
+        "PDF workspace input sync failed",
+        error
+      );
+    }
+  },
+
+  render(){
+
+    const list=document.getElementById(
+      "ppPdfList"
+    );
+
+    const summary=document.getElementById(
+      "ppPdfSummary"
+    );
+
+    if(!list){
+      return;
+    }
+
+    list.innerHTML="";
+
+    if(!this.files.length){
+
+      list.innerHTML=
+        '<div class="pp-pdf-empty">' +
+        'No PDF files added yet' +
+        '</div>';
+
+      if(summary){
+        summary.textContent="0 files";
+      }
+
+      return;
+    }
+
+    let total=0;
+
+    this.files.forEach((file,index)=>{
+
+      total += file.size;
+
+      const row=document.createElement("div");
+
+      row.className="pp-pdf-item";
+
+      row.draggable=true;
+
+      if(index===this.selected){
+        row.style.borderColor="#a5b4fc";
+        row.style.background="#f8faff";
+      }
+
+      row.onclick=()=>{
+        this.select(index);
+      };
+
+      row.ondragstart=(event)=>{
+        this.dragStart(index,event);
+      };
+
+      row.ondragend=(event)=>{
+        this.dragEnd(event);
+      };
+
+      row.ondragover=(event)=>{
+        this.dragOverItem(index,event);
+      };
+
+      const grip=document.createElement("div");
+
+      grip.className="pp-pdf-grip";
+      grip.textContent="⋮⋮";
+
+      const num=document.createElement("div");
+
+      num.className="pp-pdf-index";
+      num.textContent=index+1;
+
+      const icon=document.createElement("div");
+
+      icon.className="pp-pdf-icon";
+      icon.textContent="📄";
+
+      const info=document.createElement("div");
+
+      info.className="pp-pdf-info";
+
+      const name=document.createElement("div");
+
+      name.className="pp-pdf-name";
+      name.textContent=file.name;
+      name.title=file.name;
+
+      const meta=document.createElement("div");
+
+      meta.className="pp-pdf-meta";
+
+      meta.textContent=
+        this.formatBytes(file.size);
+
+      info.appendChild(name);
+      info.appendChild(meta);
+
+      const actions=document.createElement("div");
+
+      actions.className="pp-pdf-actions";
+
+      const up=document.createElement("button");
+
+      up.type="button";
+      up.title="Move up";
+      up.textContent="↑";
+
+      up.onclick=(event)=>{
+        event.stopPropagation();
+        this.selected=index;
+        this.moveUp();
+      };
+
+      const down=document.createElement("button");
+
+      down.type="button";
+      down.title="Move down";
+      down.textContent="↓";
+
+      down.onclick=(event)=>{
+        event.stopPropagation();
+        this.selected=index;
+        this.moveDown();
+      };
+
+      const remove=document.createElement("button");
+
+      remove.type="button";
+      remove.title="Remove";
+      remove.textContent="×";
+
+      remove.onclick=(event)=>{
+        event.stopPropagation();
+        this.remove(index);
+      };
+
+      actions.appendChild(up);
+      actions.appendChild(down);
+      actions.appendChild(remove);
+
+      row.appendChild(grip);
+      row.appendChild(num);
+      row.appendChild(icon);
+      row.appendChild(info);
+      row.appendChild(actions);
+
+      list.appendChild(row);
+    });
+
+    if(summary){
+
+      summary.textContent=
+        this.files.length +
+        (this.files.length===1
+          ? " PDF"
+          : " PDFs") +
+        " • " +
+        this.formatBytes(total);
+    }
+  }
+};
+
+
+/* Existing merge input -> advanced workspace */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  ()=>{
+
+    const mergeInput=
+      document.getElementById("mergeFiles");
+
+    const extraInput=
+      document.getElementById("ppPdfExtraInput");
+
+    if(mergeInput){
+
+      mergeInput.addEventListener(
+        "change",
+        ()=>{
+
+          PPPDFWorkspace.files=[
+            ...mergeInput.files
+          ];
+
+          PPPDFWorkspace.selected=
+            PPPDFWorkspace.files.length
+            ? 0
+            : -1;
+
+          PPPDFWorkspace.open();
+        }
+      );
+    }
+
+    if(extraInput){
+
+      extraInput.addEventListener(
+        "change",
+        ()=>{
+
+          PPPDFWorkspace.addFiles(
+            extraInput.files
+          );
+
+          extraInput.value="";
+        }
+      );
+    }
+
+    PPPDFWorkspace.render();
+  }
+);
+
+</script>
+
+
+<div id="pp4VisualPageManager" class="pp4-overlay hidden">
+
+    <div class="pp4-modal">
+
+        <div class="pp4-head">
+
+            <div>
+                <div class="pp4-head-title">Visual PDF Page Manager</div>
+                <div class="pp4-head-sub">
+                    Preview, select, reorder, rotate, delete or extract pages
+                </div>
+            </div>
+
+            <button
+                type="button"
+                class="pp4-close"
+                onclick="PP4PageManager.close()"
+                aria-label="Close"
+            >&#10005;</button>
+
+        </div>
+
+        <div class="pp4-toolbar">
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.selectAll()"
+            >Select All</button>
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.selectNone()"
+            >Select None</button>
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.selectOdd()"
+            >Odd</button>
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.selectEven()"
+            >Even</button>
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.invertSelection()"
+            >Invert</button>
+
+            <span class="pp4-spacer"></span>
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.rotate(90)"
+            >&#8635; 90&deg;</button>
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.rotate(-90)"
+            >&#8634; 90&deg;</button>
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.rotate(180)"
+            >180&deg;</button>
+
+            <button
+                type="button"
+                class="pp4-tool danger"
+                onclick="PP4PageManager.deleteSelected()"
+            >Delete</button>
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.extractSelected()"
+            >Extract</button>
+
+            <button
+                type="button"
+                class="pp4-tool primary"
+                onclick="PP4PageManager.applyOrder()"
+            >Apply Order</button>
+
+        </div>
+
+        <div class="pp4-filebar">
+
+            <input
+                id="pp4File"
+                class="pp4-file-input"
+                type="file"
+                accept=".pdf,application/pdf"
+            >
+
+            <button
+                type="button"
+                class="pp4-tool"
+                onclick="PP4PageManager.load()"
+            >Load PDF</button>
+
+            <div id="pp4Status" class="pp4-status">
+                Choose a PDF to start.
+            </div>
+
+        </div>
+
+        <div id="pp4Pages" class="pp4-pages">
+
+            <div class="pp4-empty">
+                <strong>No PDF loaded</strong>
+                <span>Select a PDF and click Load PDF.</span>
+            </div>
+
+        </div>
+
+        <div class="pp4-footer">
+
+            <div id="pp4Count" class="pp4-count">
+                0 pages &bull; 0 selected
+            </div>
+
+            <div id="pp4Progress" class="pp4-progress">
+                <span></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script id="visual-page-manager-js">
+
+(function(){
+
+    const state = {
+        file: null,
+        pages: [],
+        selected: new Set(),
+        dragIndex: null,
+        loading: false
+    };
+
+    function $(id){
+        return document.getElementById(id);
+    }
+
+    function setStatus(text){
+        const el = $("pp4Status");
+        if(el) el.textContent = text;
+    }
+
+    function updateCount(){
+        const total = state.pages.length;
+        const selected = state.selected.size;
+
+        const el = $("pp4Count");
+
+        if(el){
+            el.textContent =
+                total + " pages • " + selected + " selected";
+        }
+    }
+
+    function progress(value, visible){
+        const box = $("pp4Progress");
+        if(!box) return;
+
+        box.style.display = visible ? "block" : "none";
+
+        const bar = box.querySelector("span");
+
+        if(bar){
+            bar.style.width = Math.max(
+                0,
+                Math.min(100, value)
+            ) + "%";
+        }
+    }
+
+    function open(){
+        $("pp4VisualPageManager").classList.remove("hidden");
+    }
+
+    function close(){
+        $("pp4VisualPageManager").classList.add("hidden");
+    }
+
+    function selectedPages(){
+
+        return state.pages
+            .filter(p => state.selected.has(p.id))
+            .map(p => p.num);
+
+    }
+
+    function selectedSpec(){
+
+        return selectedPages().join(",");
+
+    }
+
+    function render(){
+
+        const container = $("pp4Pages");
+
+        if(!container) return;
+
+        container.innerHTML = "";
+
+        if(!state.pages.length){
+
+            container.innerHTML = `
+                <div class="pp4-empty">
+                    <strong>No pages available</strong>
+                    <span>Load a PDF to see its pages.</span>
+                </div>
+            `;
+
+            updateCount();
+            return;
+        }
+
+        state.pages.forEach((page,index)=>{
+
+            const card = document.createElement("div");
+
+            card.className =
+                "pp4-page" +
+                (state.selected.has(page.id) ? " selected" : "");
+
+            card.draggable = true;
+
+            card.dataset.index = index;
+
+            card.addEventListener("dragstart", function(){
+
+                state.dragIndex = index;
+
+                card.classList.add("dragging");
+
+            });
+
+            card.addEventListener("dragend", function(){
+
+                state.dragIndex = null;
+
+                card.classList.remove("dragging");
+
+            });
+
+            card.addEventListener("dragover", function(e){
+
+                e.preventDefault();
+
+            });
+
+            card.addEventListener("drop", function(e){
+
+                e.preventDefault();
+
+                const from = state.dragIndex;
+                const to = index;
+
+                if(
+                    from === null ||
+                    from === undefined ||
+                    from === to
+                ){
+                    return;
+                }
+
+                const moved = state.pages.splice(from,1)[0];
+
+                state.pages.splice(to,0,moved);
+
+                render();
+
+                setStatus(
+                    "Page order changed. Click Apply Order to create the reordered PDF."
+                );
+
+            });
+
+            const checked =
+                state.selected.has(page.id)
+                    ? "checked"
+                    : "";
+
+            card.innerHTML = `
+                <img
+                    class="pp4-thumb"
+                    src="${page.data}"
+                    alt="Page ${page.num}"
+                    loading="lazy"
+                >
+
+                <div class="pp4-page-meta">
+
+                    <input
+                        class="pp4-check"
+                        type="checkbox"
+                        ${checked}
+                        aria-label="Select page ${page.num}"
+                    >
+
+                    <span class="pp4-number">
+                        Page ${page.num}
+                    </span>
+
+                    <span class="pp4-drag">
+                        &#8942;&#8942;
+                    </span>
+
+                </div>
+            `;
+
+            const checkbox =
+                card.querySelector(".pp4-check");
+
+            checkbox.addEventListener("click",function(e){
+
+                e.stopPropagation();
+
+            });
+
+            checkbox.addEventListener("change",function(){
+
+                if(this.checked){
+                    state.selected.add(page.id);
+                }else{
+                    state.selected.delete(page.id);
+                }
+
+                updateCount();
+
+                card.classList.toggle(
+                    "selected",
+                    this.checked
+                );
+
+            });
+
+            card.addEventListener("click",function(e){
+
+                if(e.target === checkbox){
+                    return;
+                }
+
+                if(state.selected.has(page.id)){
+                    state.selected.delete(page.id);
+                }else{
+                    state.selected.add(page.id);
+                }
+
+                render();
+
+            });
+
+            container.appendChild(card);
+
+        });
+
+        updateCount();
+    }
+
+    async function load(){
+
+        const input = $("pp4File");
+
+        if(!input || !input.files.length){
+
+            setStatus("Please choose a PDF first.");
+
+            return;
+        }
+
+        const file = input.files[0];
+
+        if(
+            file.type &&
+            file.type !== "application/pdf" &&
+            !file.name.toLowerCase().endsWith(".pdf")
+        ){
+
+            setStatus("Please choose a PDF file.");
+
+            return;
+        }
+
+        state.file = file;
+        state.pages = [];
+        state.selected = new Set();
+
+        render();
+
+        setStatus(
+            "Generating page previews..."
+        );
+
+        progress(5,true);
+
+        const fd = new FormData();
+
+        fd.append("file",file);
+        fd.append("max_pages","150");
+        fd.append("thumb_width","240");
+        fd.append("quality","72");
+
+        try{
+
+            const response =
+                await fetch(
+                    "/api/page-thumbnails",
+                    {
+                        method:"POST",
+                        body:fd
+                    }
+                );
+
+            if(!response.ok){
+
+                let message =
+                    "Unable to load PDF.";
+
+                try{
+
+                    const err =
+                        await response.json();
+
+                    if(err.detail){
+                        message = err.detail;
+                    }
+
+                }catch(_){}
+
+                throw new Error(message);
+            }
+
+            const data =
+                await response.json();
+
+            state.pages =
+                data.pages.map(function(page){
+
+                    return {
+                        id:"p" + page.page + "_" +
+                            Math.random()
+                                .toString(36)
+                                .slice(2),
+
+                        num:page.page,
+
+                        data:page.data
+                    };
+
+                });
+
+            state.selected = new Set();
+
+            render();
+
+            if(data.truncated){
+
+                setStatus(
+                    "Showing first " +
+                    data.rendered_pages +
+                    " of " +
+                    data.total_pages +
+                    " pages. Large-PDF preview is limited."
+                );
+
+            }else{
+
+                setStatus(
+                    "Loaded " +
+                    data.total_pages +
+                    " pages. Drag pages to reorder."
+                );
+
+            }
+
+            progress(100,true);
+
+            setTimeout(function(){
+                progress(0,false);
+            },500);
+
+        }catch(error){
+
+            progress(0,false);
+
+            setStatus(
+                error.message ||
+                "Unable to generate page previews."
+            );
+
+        }
+
+    }
+
+    function requireFile(){
+
+        if(!state.file){
+
+            setStatus("Load a PDF first.");
+
+            return false;
+        }
+
+        if(!state.pages.length){
+
+            setStatus("No pages are loaded.");
+
+            return false;
+        }
+
+        return true;
+    }
+
+    function selectAll(){
+
+        state.selected = new Set(
+            state.pages.map(p=>p.id)
+        );
+
+        render();
+
+    }
+
+    function selectNone(){
+
+        state.selected.clear();
+
+        render();
+
+    }
+
+    function selectOdd(){
+
+        state.selected = new Set(
+            state.pages
+                .filter(p => p.num % 2 === 1)
+                .map(p => p.id)
+        );
+
+        render();
+
+    }
+
+    function selectEven(){
+
+        state.selected = new Set(
+            state.pages
+                .filter(p => p.num % 2 === 0)
+                .map(p => p.id)
+        );
+
+        render();
+
+    }
+
+    function invertSelection(){
+
+        const next = new Set();
+
+        state.pages.forEach(function(page){
+
+            if(!state.selected.has(page.id)){
+                next.add(page.id);
+            }
+
+        });
+
+        state.selected = next;
+
+        render();
+
+    }
+
+    async function downloadResponse(
+        response,
+        filename
+    ){
+
+        if(!response.ok){
+
+            let message = "Operation failed.";
+
+            try{
+
+                const err =
+                    await response.json();
+
+                if(err.detail){
+                    message = err.detail;
+                }
+
+            }catch(_){}
+
+            throw new Error(message);
+        }
+
+        const blob =
+            await response.blob();
+
+        const url =
+            URL.createObjectURL(blob);
+
+        const a =
+            document.createElement("a");
+
+        a.href = url;
+        a.download = filename;
+
+        document.body.appendChild(a);
+
+        a.click();
+
+        a.remove();
+
+        setTimeout(function(){
+            URL.revokeObjectURL(url);
+        },1000);
+
+    }
+
+    async function deleteSelected(){
+
+        if(!requireFile()) return;
+
+        const pages = selectedSpec();
+
+        if(!pages){
+
+            setStatus("Select at least one page.");
+
+            return;
+        }
+
+        if(
+            state.selected.size >=
+            state.pages.length
+        ){
+
+            setStatus(
+                "You cannot delete every page from the PDF."
+            );
+
+            return;
+        }
+
+        const fd = new FormData();
+
+        fd.append("file",state.file);
+        fd.append("pages",pages);
+        fd.append("action","delete");
+
+        setStatus(
+            "Deleting selected pages..."
+        );
+
+        try{
+
+            const response =
+                await fetch(
+                    "/api/pages",
+                    {
+                        method:"POST",
+                        body:fd
+                    }
+                );
+
+            await downloadResponse(
+                response,
+                "Deleted_Selected_Pages.pdf"
+            );
+
+            setStatus(
+                "Deleted-pages PDF downloaded."
+            );
+
+        }catch(error){
+
+            setStatus(
+                error.message ||
+                "Delete operation failed."
+            );
+
+        }
+
+    }
+
+    async function extractSelected(){
+
+        if(!requireFile()) return;
+
+        const pages = selectedSpec();
+
+        if(!pages){
+
+            setStatus("Select at least one page.");
+
+            return;
+        }
+
+        const fd = new FormData();
+
+        fd.append("file",state.file);
+        fd.append("pages",pages);
+        fd.append("action","extract");
+
+        setStatus(
+            "Extracting selected pages..."
+        );
+
+        try{
+
+            const response =
+                await fetch(
+                    "/api/pages",
+                    {
+                        method:"POST",
+                        body:fd
+                    }
+                );
+
+            await downloadResponse(
+                response,
+                "Extracted_Selected_Pages.pdf"
+            );
+
+            setStatus(
+                "Extracted-pages PDF downloaded."
+            );
+
+        }catch(error){
+
+            setStatus(
+                error.message ||
+                "Extract operation failed."
+            );
+
+        }
+
+    }
+
+    async function rotate(degrees){
+
+        if(!requireFile()) return;
+
+        const pages = selectedSpec();
+
+        if(!pages){
+
+            setStatus(
+                "Select pages before rotating."
+            );
+
+            return;
+        }
+
+        const fd = new FormData();
+
+        fd.append("file",state.file);
+        fd.append("pages",pages);
+        fd.append("degrees",String(degrees));
+
+        setStatus(
+            "Rotating selected pages..."
+        );
+
+        try{
+
+            const response =
+                await fetch(
+                    "/api/rotate-pages",
+                    {
+                        method:"POST",
+                        body:fd
+                    }
+                );
+
+            await downloadResponse(
+                response,
+                "Rotated_Selected_Pages.pdf"
+            );
+
+            setStatus(
+                "Rotated-pages PDF downloaded."
+            );
+
+        }catch(error){
+
+            setStatus(
+                error.message ||
+                "Rotation failed."
+            );
+
+        }
+
+    }
+
+    async function applyOrder(){
+
+        if(!requireFile()) return;
+
+        if(state.pages.length < 2){
+
+            setStatus(
+                "At least two pages are needed for reordering."
+            );
+
+            return;
+        }
+
+        const order =
+            state.pages
+                .map(p=>p.num)
+                .join(",");
+
+        const fd = new FormData();
+
+        fd.append("file",state.file);
+        fd.append("pages",order);
+        fd.append("action","reorder");
+
+        setStatus(
+            "Applying page order..."
+        );
+
+        try{
+
+            const response =
+                await fetch(
+                    "/api/pages",
+                    {
+                        method:"POST",
+                        body:fd
+                    }
+                );
+
+            await downloadResponse(
+                response,
+                "Reordered_Pages.pdf"
+            );
+
+            setStatus(
+                "Reordered PDF downloaded."
+            );
+
+        }catch(error){
+
+            setStatus(
+                error.message ||
+                "Reorder operation failed."
+            );
+
+        }
+
+    }
+
+    window.PP4PageManager = {
+        open,
+        close,
+        load,
+        render,
+        selectAll,
+        selectNone,
+        selectOdd,
+        selectEven,
+        invertSelection,
+        deleteSelected,
+        extractSelected,
+        rotate,
+        applyOrder
+    };
+
+    /*
+     * Add launcher inside existing Organize section.
+     * Existing cards/routes remain untouched.
+     */
+
+    function installLauncher(){
+
+        const organize =
+            document.getElementById("organize");
+
+        if(!organize) return;
+
+        if(
+            document.getElementById(
+                "pp4LaunchVisualManager"
+            )
+        ){
+            return;
+        }
+
+        const heading =
+            organize.querySelector("h2");
+
+        if(!heading) return;
+
+        const wrap =
+            document.createElement("div");
+
+        wrap.className =
+            "pp4-launch-wrap";
+
+        wrap.id =
+            "pp4LaunchVisualManager";
+
+        wrap.innerHTML = `
+            <button
+                type="button"
+                class="pp4-launch"
+                onclick="PP4PageManager.open()"
+            >
+                &#128444; Open Visual PDF Page Manager
+                <span style="opacity:.7">
+                    &nbsp; Preview &bull; Select &bull; Reorder &bull; Edit
+                </span>
+            </button>
+        `;
+
+        heading.insertAdjacentElement(
+            "afterend",
+            wrap
+        );
+
+    }
+
+    if(document.readyState === "loading"){
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            installLauncher
+        );
+
+    }else{
+
+        installLauncher();
+
+    }
+
+})();
+
+</script>
+
+
+<div id="pp5BatchCenter" class="pp5-overlay hidden">
+
+    <div class="pp5-modal">
+
+        <div class="pp5-header">
+
+            <div>
+                <div class="pp5-title">
+                    Professional Batch Processing
+                </div>
+
+                <div class="pp5-subtitle">
+                    Process multiple PDFs in one temporary workflow
+                </div>
+            </div>
+
+            <button
+                type="button"
+                class="pp5-close"
+                onclick="PP5Batch.close()"
+                aria-label="Close"
+            >&#10005;</button>
+
+        </div>
+
+        <div class="pp5-body">
+
+            <label
+                id="pp5Drop"
+                class="pp5-drop"
+                for="pp5Input"
+            >
+
+                <div>
+                    <strong>
+                        Drop PDF files here
+                    </strong>
+
+                    <span>
+                        or click to choose multiple PDFs
+                    </span>
+                </div>
+
+            </label>
+
+            <input
+                id="pp5Input"
+                class="pp5-file-input"
+                type="file"
+                multiple
+                accept=".pdf,application/pdf"
+            >
+
+            <div class="pp5-controls">
+
+                <div class="pp5-control">
+
+                    <label for="pp5Operation">
+                        Batch operation
+                    </label>
+
+                    <select id="pp5Operation">
+
+                        <option value="compress">
+                            Compress PDFs
+                        </option>
+
+                        <option value="rotate">
+                            Rotate selected pages
+                        </option>
+
+                        <option value="extract">
+                            Extract selected pages
+                        </option>
+
+                        <option value="delete">
+                            Delete selected pages
+                        </option>
+
+                        <option value="reorder">
+                            Reorder selected pages
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div
+                    id="pp5PagesControl"
+                    class="pp5-control pp5-pages-control"
+                >
+
+                    <label for="pp5Pages">
+                        Page selection / order
+                    </label>
+
+                    <input
+                        id="pp5Pages"
+                        type="text"
+                        placeholder="Example: 1,3,5-8"
+                    >
+
+                </div>
+
+                <div
+                    id="pp5DegreesControl"
+                    class="pp5-control pp5-pages-control"
+                >
+
+                    <label for="pp5Degrees">
+                        Rotation
+                    </label>
+
+                    <select id="pp5Degrees">
+
+                        <option value="90">90° clockwise</option>
+                        <option value="-90">90° counter-clockwise</option>
+                        <option value="180">180°</option>
+                        <option value="270">270° clockwise</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="pp5-queue">
+
+                <div class="pp5-queue-head">
+
+                    <div class="pp5-queue-title">
+                        Processing queue
+                    </div>
+
+                    <div
+                        id="pp5QueueCount"
+                        class="pp5-queue-count"
+                    >
+                        0 PDFs
+                    </div>
+
+                </div>
+
+                <div id="pp5Items" class="pp5-items">
+
+                    <div class="pp5-empty">
+                        Add PDF files to begin.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="pp5-actions">
+
+                <button
+                    type="button"
+                    class="pp5-button"
+                    onclick="PP5Batch.addMore()"
+                >
+                    + Add PDFs
+                </button>
+
+                <button
+                    type="button"
+                    class="pp5-button danger"
+                    onclick="PP5Batch.clear()"
+                >
+                    Clear Queue
+                </button>
+
+                <button
+                    id="pp5Run"
+                    type="button"
+                    class="pp5-button primary"
+                    onclick="PP5Batch.run()"
+                    disabled
+                >
+                    Process Batch & Download ZIP
+                </button>
+
+            </div>
+
+            <div
+                id="pp5ProgressWrap"
+                class="pp5-progress-wrap"
+            >
+
+                <div
+                    id="pp5ProgressText"
+                    class="pp5-progress-text"
+                >
+                    Preparing...
+                </div>
+
+                <div class="pp5-progress">
+                    <span id="pp5ProgressBar"></span>
+                </div>
+
+            </div>
+
+            <div class="pp5-note">
+                Files are processed temporarily on this local server.
+                No persistent document database is used.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script id="professional-batch-center-js">
+
+(function(){
+
+    const state = {
+        files: [],
+        running: false
+    };
+
+    function $(id){
+        return document.getElementById(id);
+    }
+
+    function open(){
+        $("pp5BatchCenter").classList.remove("hidden");
+        updateOperationUI();
+    }
+
+    function close(){
+
+        if(state.running){
+            return;
+        }
+
+        $("pp5BatchCenter").classList.add("hidden");
+    }
+
+    function addMore(){
+        $("pp5Input").click();
+    }
+
+    function formatBytes(bytes){
+
+        if(bytes < 1024){
+            return bytes + " B";
+        }
+
+        if(bytes < 1024 * 1024){
+            return (bytes / 1024).toFixed(1) + " KB";
+        }
+
+        return (
+            bytes /
+            (1024 * 1024)
+        ).toFixed(1) + " MB";
+    }
+
+    function duplicateKey(file){
+
+        return [
+            file.name.toLowerCase(),
+            file.size,
+            file.lastModified
+        ].join("|");
+
+    }
+
+    function addFiles(fileList){
+
+        if(state.running){
+            return;
+        }
+
+        const incoming = [
+            ...fileList
+        ];
+
+        let added = 0;
+
+        incoming.forEach(function(file){
+
+            if(
+                !file.name
+                    .toLowerCase()
+                    .endsWith(".pdf")
+            ){
+                return;
+            }
+
+            const key = duplicateKey(file);
+
+            const duplicate =
+                state.files.some(
+                    f => duplicateKey(f) === key
+                );
+
+            if(duplicate){
+                return;
+            }
+
+            if(state.files.length >= 100){
+                return;
+            }
+
+            state.files.push(file);
+
+            added++;
+
+        });
+
+        render();
+
+    }
+
+    function remove(index){
+
+        if(state.running){
+            return;
+        }
+
+        state.files.splice(index,1);
+
+        render();
+
+    }
+
+    function clear(){
+
+        if(state.running){
+            return;
+        }
+
+        state.files = [];
+
+        render();
+
+    }
+
+    function render(){
+
+        const container = $("pp5Items");
+
+        container.innerHTML = "";
+
+        if(!state.files.length){
+
+            container.innerHTML = `
+                <div class="pp5-empty">
+                    Add PDF files to begin.
+                </div>
+            `;
+
+        }else{
+
+            state.files.forEach(function(file,index){
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "pp5-item";
+
+                item.innerHTML = `
+
+                    <div class="pp5-index">
+                        ${index + 1}
+                    </div>
+
+                    <div class="pp5-pdf-icon">
+                        &#128196;
+                    </div>
+
+                    <div class="pp5-name">
+
+                        <strong>
+                            ${escapeHtml(file.name)}
+                        </strong>
+
+                        <span>
+                            ${formatBytes(file.size)}
+                        </span>
+
+                    </div>
+
+                    <div class="pp5-status">
+                        Ready
+                    </div>
+
+                    <button
+                        type="button"
+                        class="pp5-remove"
+                        onclick="PP5Batch.remove(${index})"
+                        aria-label="Remove PDF"
+                    >
+                        &#10005;
+                    </button>
+
+                `;
+
+                container.appendChild(item);
+
+            });
+
+        }
+
+        $("pp5QueueCount").textContent =
+            state.files.length +
+            (state.files.length === 1 ? " PDF" : " PDFs");
+
+        $("pp5Run").disabled =
+            state.files.length === 0 ||
+            state.running;
+
+    }
+
+    function escapeHtml(value){
+
+        return String(value)
+            .replace(/&/g,"&amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/"/g,"&quot;")
+            .replace(/'/g,"&#039;");
+
+    }
+
+    function updateOperationUI(){
+
+        const operation =
+            $("pp5Operation").value;
+
+        const needsPages =
+            operation !== "compress";
+
+        const needsDegrees =
+            operation === "rotate";
+
+        $("pp5PagesControl")
+            .classList.toggle(
+                "show",
+                needsPages
+            );
+
+        $("pp5DegreesControl")
+            .classList.toggle(
+                "show",
+                needsDegrees
+            );
+
+    }
+
+    async function run(){
+
+        if(state.running){
+            return;
+        }
+
+        if(!state.files.length){
+            return;
+        }
+
+        const operation =
+            $("pp5Operation").value;
+
+        const pages =
+            $("pp5Pages").value.trim();
+
+        const degrees =
+            $("pp5Degrees").value;
+
+        if(
+            operation !== "compress" &&
+            !pages
+        ){
+
+            alert(
+                "Enter the page selection/order first."
+            );
+
+            return;
+        }
+
+        state.running = true;
+
+        const runButton =
+            $("pp5Run");
+
+        runButton.disabled = true;
+
+        $("pp5ProgressWrap")
+            .classList.add("show");
+
+        $("pp5ProgressText")
+            .textContent =
+                "Uploading " +
+                state.files.length +
+                " PDFs...";
+
+        $("pp5ProgressBar")
+            .style.width = "12%";
+
+        const fd = new FormData();
+
+        state.files.forEach(function(file){
+            fd.append("files",file);
+        });
+
+        fd.append(
+            "operation",
+            operation
+        );
+
+        fd.append(
+            "pages",
+            pages
+        );
+
+        fd.append(
+            "degrees",
+            degrees
+        );
+
+        try{
+
+            $("pp5ProgressText")
+                .textContent =
+                    "Processing batch...";
+
+            $("pp5ProgressBar")
+                .style.width = "48%";
+
+            const response =
+                await fetch(
+                    "/api/batch-process",
+                    {
+                        method:"POST",
+                        body:fd
+                    }
+                );
+
+            if(!response.ok){
+
+                let message =
+                    "Batch processing failed.";
+
+                try{
+
+                    const error =
+                        await response.json();
+
+                    if(error.detail){
+                        message =
+                            error.detail;
+                    }
+
+                }catch(_){}
+
+                throw new Error(message);
+
+            }
+
+            $("pp5ProgressText")
+                .textContent =
+                    "Preparing ZIP download...";
+
+            $("pp5ProgressBar")
+                .style.width = "85%";
+
+            const blob =
+                await response.blob();
+
+            const url =
+                URL.createObjectURL(blob);
+
+            const a =
+                document.createElement("a");
+
+            a.href = url;
+
+            a.download =
+                "PrivatePDF_Batch_Results.zip";
+
+            document.body.appendChild(a);
+
+            a.click();
+
+            a.remove();
+
+            setTimeout(function(){
+                URL.revokeObjectURL(url);
+            },1500);
+
+            $("pp5ProgressBar")
+                .style.width = "100%";
+
+            $("pp5ProgressText")
+                .textContent =
+                    "Batch complete. ZIP downloaded.";
+
+        }catch(error){
+
+            $("pp5ProgressBar")
+                .style.width = "0%";
+
+            $("pp5ProgressText")
+                .textContent =
+                    error.message ||
+                    "Batch processing failed.";
+
+        }finally{
+
+            state.running = false;
+
+            $("pp5Run").disabled =
+                state.files.length === 0;
+
+        }
+
+    }
+
+    const input =
+        $("pp5Input");
+
+    input.addEventListener(
+        "change",
+        function(){
+            addFiles(this.files);
+            this.value = "";
+        }
+    );
+
+    const drop =
+        $("pp5Drop");
+
+    [
+        "dragenter",
+        "dragover"
+    ].forEach(function(eventName){
+
+        drop.addEventListener(
+            eventName,
+            function(event){
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                drop.classList.add("dragging");
+
+            }
+        );
+
+    });
+
+    [
+        "dragleave",
+        "drop"
+    ].forEach(function(eventName){
+
+        drop.addEventListener(
+            eventName,
+            function(event){
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                drop.classList.remove("dragging");
+
+            }
+        );
+
+    });
+
+    drop.addEventListener(
+        "drop",
+        function(event){
+
+            addFiles(
+                event.dataTransfer.files
+            );
+
+        }
+    );
+
+    $("pp5Operation").addEventListener(
+        "change",
+        updateOperationUI
+    );
+
+    window.PP5Batch = {
+        open,
+        close,
+        addMore,
+        addFiles,
+        remove,
+        clear,
+        run,
+        render
+    };
+
+    function installLauncher(){
+
+        const organize =
+            document.getElementById("organize");
+
+        if(!organize){
+            return;
+        }
+
+        if(
+            document.getElementById(
+                "pp5LaunchBatchCenter"
+            )
+        ){
+            return;
+        }
+
+        const existing =
+            document.getElementById(
+                "pp4LaunchVisualManager"
+            );
+
+        const wrap =
+            document.createElement("div");
+
+        wrap.className =
+            "pp5-launch-wrap";
+
+        wrap.id =
+            "pp5LaunchBatchCenter";
+
+        wrap.innerHTML = `
+            <button
+                type="button"
+                class="pp5-launch"
+                onclick="PP5Batch.open()"
+            >
+                &#9889; Professional Batch Processing
+                <span style="opacity:.72">
+                    &nbsp; Multiple PDFs &bull; One ZIP
+                </span>
+            </button>
+        `;
+
+        if(existing){
+            existing.insertAdjacentElement(
+                "afterend",
+                wrap
+            );
+        }else{
+            const heading =
+                organize.querySelector("h2");
+
+            if(heading){
+                heading.insertAdjacentElement(
+                    "afterend",
+                    wrap
+                );
+            }
+        }
+
+    }
+
+    if(document.readyState === "loading"){
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            installLauncher
+        );
+
+    }else{
+
+        installLauncher();
+
+    }
+
+    render();
+
+})();
+
+</script>
+
+
+<script id="upgrade-6-global-search-theme-js">
+
+(function(){
+
+    const search =
+        document.getElementById(
+            "pp6GlobalSearch"
+        );
+
+    const clearButton =
+        document.getElementById(
+            "pp6SearchClear"
+        );
+
+    const hint =
+        document.getElementById(
+            "pp6SearchHint"
+        );
+
+    const results =
+        document.getElementById(
+            "pp6SearchResults"
+        );
+
+    const theme =
+        document.getElementById(
+            "pp6ThemeToggle"
+        );
+
+    if(!search || !theme){
+        return;
+    }
+
+    function textOf(el){
+
+        return (
+            el.innerText ||
+            el.textContent ||
+            ""
+        )
+        .replace(/\s+/g," ")
+        .trim();
+
+    }
+
+    function getSearchTargets(){
+
+        const targets = [];
+
+        document
+            .querySelectorAll(
+                ".card, .nav button"
+            )
+            .forEach(function(el){
+
+                if(
+                    el.closest("#pp6GlobalToolbar")
+                ){
+                    return;
+                }
+
+                const text =
+                    textOf(el);
+
+                if(text){
+                    targets.push({
+                        el:el,
+                        text:text.toLowerCase(),
+                        title:text
+                    });
+                }
+
+            });
+
+        return targets;
+
+    }
+
+    function getSectionName(el){
+
+        const section =
+            el.closest(".section");
+
+        if(!section){
+            return "PDF tools";
+        }
+
+        const heading =
+            section.querySelector("h2");
+
+        return heading
+            ? textOf(heading)
+            : "PDF tools";
+
+    }
+
+    function sectionHasVisibleMatch(section){
+
+        if(!section){
+            return true;
+        }
+
+        const cards =
+            [
+                ...section.querySelectorAll(".card")
+            ];
+
+        if(!cards.length){
+            return !section.classList.contains(
+                "pp6-search-hidden"
+            );
+        }
+
+        return cards.some(
+            card =>
+                !card.classList.contains(
+                    "pp6-search-hidden"
+                )
+        );
+
+    }
+
+    function clearFiltering(){
+
+        document
+            .querySelectorAll(
+                ".pp6-search-hidden"
+            )
+            .forEach(function(el){
+                el.classList.remove(
+                    "pp6-search-hidden"
+                );
+            });
+
+        document
+            .querySelectorAll(
+                ".pp6-search-match"
+            )
+            .forEach(function(el){
+                el.classList.remove(
+                    "pp6-search-match"
+                );
+            });
+
+        document
+            .querySelectorAll(
+                ".pp6-search-count"
+            )
+            .forEach(function(el){
+                el.remove();
+            });
+
+        results.classList.remove("show");
+        results.innerHTML = "";
+
+        clearButton.classList.remove("show");
+        hint.style.display = "";
+
+    }
+
+    function performSearch(value){
+
+        const query =
+            value
+                .trim()
+                .toLowerCase();
+
+        if(!query){
+
+            clearFiltering();
+
+            return;
+
+        }
+
+        clearButton.classList.add("show");
+        hint.style.display = "none";
+
+        const targets =
+            getSearchTargets();
+
+        const matches =
+            targets.filter(
+                item =>
+                    item.text.includes(query)
+            );
+
+        targets.forEach(function(item){
+
+            if(
+                item.text.includes(query)
+            ){
+
+                item.el.classList.add(
+                    "pp6-search-match"
+                );
+
+            }else{
+
+                item.el.classList.add(
+                    "pp6-search-hidden"
+                );
+
+            }
+
+        });
+
+        document
+            .querySelectorAll(".section")
+            .forEach(function(section){
+
+                if(
+                    !sectionHasVisibleMatch(section)
+                ){
+
+                    section.classList.add(
+                        "pp6-search-hidden"
+                    );
+
+                }else{
+
+                    section.classList.remove(
+                        "pp6-search-hidden"
+                    );
+
+                }
+
+            });
+
+        renderResults(matches.slice(0,8));
+
+        let counter =
+            document.getElementById(
+                "pp6SearchCount"
+            );
+
+        if(!counter){
+
+            counter =
+                document.createElement("div");
+
+            counter.id =
+                "pp6SearchCount";
+
+            counter.className =
+                "pp6-search-count";
+
+            document.body.appendChild(counter);
+
+        }
+
+        counter.textContent =
+            matches.length +
+            (
+                matches.length === 1
+                    ? " tool found"
+                    : " tools found"
+            );
+
+        counter.classList.add("show");
+
+    }
+
+    function renderResults(matches){
+
+        results.innerHTML = "";
+
+        if(!matches.length){
+
+            results.innerHTML = `
+                <div class="pp6-no-results">
+                    No matching tools found
+                </div>
+            `;
+
+            results.classList.add("show");
+
+            return;
+
+        }
+
+        matches.forEach(function(item){
+
+            const button =
+                document.createElement("button");
+
+            button.type = "button";
+            button.className = "pp6-result";
+
+            button.innerHTML = `
+                <span class="pp6-result-icon">
+                    &#9881;
+                </span>
+
+                <span>
+                    <span class="pp6-result-name">
+                        ${escapeHtml(item.title)}
+                    </span>
+
+                    <span class="pp6-result-section">
+                        ${escapeHtml(
+                            getSectionName(item.el)
+                        )}
+                    </span>
+                </span>
+            `;
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    item.el.scrollIntoView({
+                        behavior:"smooth",
+                        block:"center"
+                    });
+
+                    item.el.classList.add(
+                        "pp6-search-match"
+                    );
+
+                    results.classList.remove(
+                        "show"
+                    );
+
+                }
+            );
+
+            results.appendChild(button);
+
+        });
+
+        results.classList.add("show");
+
+    }
+
+    function escapeHtml(value){
+
+        return String(value)
+            .replace(/&/g,"&amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/"/g,"&quot;")
+            .replace(/'/g,"&#039;");
+
+    }
+
+    function updateThemeIcon(){
+
+        const dark =
+            document.body.classList.contains(
+                "pp6-dark"
+            );
+
+        theme.innerHTML =
+            dark
+                ? "&#9728;"
+                : "&#127769;";
+
+        theme.title =
+            dark
+                ? "Switch to light mode"
+                : "Switch to dark mode";
+
+    }
+
+    function applyTheme(mode){
+
+        const dark =
+            mode === "dark";
+
+        document.body.classList.toggle(
+            "pp6-dark",
+            dark
+        );
+
+        localStorage.setItem(
+            "privatepdf-theme",
+            dark ? "dark" : "light"
+        );
+
+        updateThemeIcon();
+
+    }
+
+    const savedTheme =
+        localStorage.getItem(
+            "privatepdf-theme"
+        );
+
+    if(savedTheme === "dark"){
+
+        applyTheme("dark");
+
+    }else if(savedTheme === "light"){
+
+        applyTheme("light");
+
+    }else{
+
+        applyTheme(
+            window.matchMedia &&
+            window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            ).matches
+                ? "dark"
+                : "light"
+        );
+
+    }
+
+    search.addEventListener(
+        "input",
+        function(){
+
+            performSearch(
+                search.value
+            );
+
+        }
+    );
+
+    search.addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Escape"){
+
+                search.value = "";
+                performSearch("");
+
+                search.blur();
+
+            }
+
+        }
+    );
+
+    clearButton.addEventListener(
+        "click",
+        function(){
+
+            search.value = "";
+
+            performSearch("");
+
+            search.focus();
+
+        }
+    );
+
+    theme.addEventListener(
+        "click",
+        function(){
+
+            const dark =
+                document.body.classList.contains(
+                    "pp6-dark"
+                );
+
+            applyTheme(
+                dark
+                    ? "light"
+                    : "dark"
+            );
+
+        }
+    );
+
+    document.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                (event.ctrlKey || event.metaKey) &&
+                event.key.toLowerCase() === "k"
+            ){
+
+                event.preventDefault();
+
+                search.focus();
+                search.select();
+
+            }
+
+        }
+    );
+
+    document.addEventListener(
+        "click",
+        function(event){
+
+            if(
+                !event.target.closest(".pp6-search")
+            ){
+
+                results.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+    updateThemeIcon();
+
+})();
+
+</script>
+
+
+<script id="upgrade-7-professional-dashboard-js">
+
+/* =========================================================
+   UPGRADE #7 - PROFESSIONAL DASHBOARD JS
+   ========================================================= */
+
+(function(){
+
+    const STORAGE_KEY = "privatepdf-recent-tools-v1";
+
+    const tools = {
+        "Merge / Split / Pages": "organize",
+        "Merge PDF": "organize",
+        "Page Manager": "organize",
+        "Edit & Layout": "edit",
+        "Watermark": "edit",
+        "Compress / Resize": "optimize",
+        "Compress PDF": "optimize",
+        "Image Studio": "imagestudio",
+        "Convert": "convert",
+        "PDF Conversion": "convert",
+        "Protect / Unlock": "security",
+        "Protect PDF": "security",
+        "Unlock PDF": "security",
+        "Advanced Tools": "advanced"
+    };
+
+    function readRecent(){
+        try{
+            const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+            return Array.isArray(value) ? value : [];
+        }catch(e){
+            return [];
+        }
+    }
+
+    function writeRecent(items){
+        try{
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(items.slice(0,8))
+            );
+        }catch(e){}
+    }
+
+    function addRecent(name){
+        const items = readRecent().filter(x => x !== name);
+        items.unshift(name);
+        writeRecent(items);
+        renderRecent();
+    }
+
+    function renderRecent(){
+        const box = document.getElementById("pp7RecentTools");
+        if(!box) return;
+
+        const items = readRecent();
+
+        if(!items.length){
+            box.innerHTML =
+                '<div class="pp7-recent-empty">No recent tools yet. Start a workflow from Quick actions.</div>';
+            return;
+        }
+
+        box.innerHTML = items.map(function(name){
+            const section = tools[name] || "organize";
+            return `
+                <button class="pp7-recent-chip"
+                        onclick="PP7Dashboard.openTool('${section}','${name.replace(/'/g,"&#39;")}')">
+                    ↗ ${name}
+                </button>
+            `;
+        }).join("");
+    }
+
+    function activateDashboard(){
+        const dashboard = document.getElementById("pp7Dashboard");
+        if(!dashboard) return;
+
+        document.querySelectorAll(".section").forEach(function(el){
+            el.style.display = "none";
+        });
+
+        document.querySelectorAll(".pp7-dashboard").forEach(function(el){
+            el.classList.remove("pp7-visible");
+        });
+
+        dashboard.classList.add("pp7-visible");
+
+        document.querySelectorAll(".nav button").forEach(function(btn){
+            btn.classList.remove("active");
+        });
+
+        const dashBtn = document.getElementById("pp7DashboardNav");
+        if(dashBtn) dashBtn.classList.add("active");
+
+        renderRecent();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    }
+
+    function openTool(section, name){
+        addRecent(name || section);
+
+        const dashboard = document.getElementById("pp7Dashboard");
+        if(dashboard){
+            dashboard.classList.remove("pp7-visible");
+        }
+
+        document.querySelectorAll(".section").forEach(function(el){
+            el.style.display = "";
+        });
+
+        try{
+            if(typeof window.show === "function"){
+                window.show(section, null);
+            }else{
+                const target = document.getElementById(section);
+                if(target){
+                    document.querySelectorAll(".section").forEach(
+                        el => el.style.display = "none"
+                    );
+                    target.style.display = "";
+                }
+            }
+        }catch(e){
+            const target = document.getElementById(section);
+            if(target){
+                document.querySelectorAll(".section").forEach(
+                    el => el.style.display = "none"
+                );
+                target.style.display = "";
+            }
+        }
+
+        const navButtons = document.querySelectorAll(".nav button");
+
+        navButtons.forEach(function(btn){
+            const onclick = btn.getAttribute("onclick") || "";
+            btn.classList.toggle(
+                "active",
+                onclick.includes("'" + section + "'") ||
+                onclick.includes('"' + section + '"')
+            );
+        });
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    }
+
+    function installDashboardNav(){
+
+        if(document.getElementById("pp7DashboardNav")){
+            return;
+        }
+
+        const firstNavGroup = document.querySelector(".navgroup");
+
+        if(!firstNavGroup){
+            return;
+        }
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "navgroup";
+        wrapper.id = "pp7DashboardNavGroup";
+
+        wrapper.innerHTML = `
+            <div class="navtitle">Workspace</div>
+            <div class="nav">
+                <button type="button"
+                        id="pp7DashboardNav"
+                        onclick="PP7Dashboard.home()">
+                    🏠 <span>Dashboard</span>
+                </button>
+            </div>
+        `;
+
+        firstNavGroup.parentNode.insertBefore(wrapper, firstNavGroup);
+    }
+
+    function installDashboardSection(){
+
+        if(document.getElementById("pp7Dashboard")){
+            return;
+        }
+
+        const firstSection = document.querySelector(".section");
+
+        if(!firstSection || !firstSection.parentNode){
+            return;
+        }
+
+        const holder = document.createElement("div");
+        holder.innerHTML = `
+<!-- =========================================================
+     UPGRADE #7 - PROFESSIONAL DASHBOARD
+     ========================================================= -->
+
+<section id="pp7Dashboard" class="pp7-dashboard">
+
+    <div class="pp7-hero">
+        <div class="pp7-eyebrow">PrivatePDF Pro</div>
+        <h1>Everything you need for professional PDF work.</h1>
+        <p>
+            Organize, edit, optimize, convert and secure your documents
+            through one clean temporary-processing workspace.
+        </p>
+
+        <div class="pp7-privacy">
+            <span class="pp7-privacy-dot"></span>
+            Temporary processing only &middot; No persistent document database
+        </div>
+    </div>
+
+    <div class="pp7-section-title">
+        <div>
+            <h3>Quick actions</h3>
+        </div>
+        <span>Start your most common workflow</span>
+    </div>
+
+    <div class="pp7-actions">
+
+        <button class="pp7-action" onclick="PP7Dashboard.openTool('organize','Merge / Split / Pages')">
+            <div class="pp7-action-icon">📚</div>
+            <strong>Organize PDFs</strong>
+            <small>Merge, split, delete, extract and reorder pages.</small>
+        </button>
+
+        <button class="pp7-action" onclick="PP7Dashboard.openTool('edit','Edit & Layout')">
+            <div class="pp7-action-icon">✏️</div>
+            <strong>Edit & Layout</strong>
+            <small>Rotate, resize, crop, number and watermark pages.</small>
+        </button>
+
+        <button class="pp7-action" onclick="PP7Dashboard.openTool('optimize','Compress / Resize')">
+            <div class="pp7-action-icon">⚡</div>
+            <strong>Optimize PDFs</strong>
+            <small>Reduce size and prepare PDFs for sharing.</small>
+        </button>
+
+        <button class="pp7-action" onclick="PP7Dashboard.openTool('convert','Convert')">
+            <div class="pp7-action-icon">🔄</div>
+            <strong>Convert files</strong>
+            <small>Move between PDF, Office and image formats.</small>
+        </button>
+
+    </div>
+
+    <div class="pp7-section-title">
+        <div>
+            <h3>All tools</h3>
+        </div>
+        <span>Available in PrivatePDF Pro</span>
+    </div>
+
+    <div class="pp7-tools">
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('organize','Merge PDF')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">📑</div>
+                <div>
+                    <strong>Merge PDF</strong>
+                    <span class="pp7-tool-category">Organize</span>
+                </div>
+            </div>
+            <p>Combine multiple PDFs in a controlled order.</p>
+        </button>
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('organize','Page Manager')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">🗂️</div>
+                <div>
+                    <strong>Page Manager</strong>
+                    <span class="pp7-tool-category">Organize</span>
+                </div>
+            </div>
+            <p>Preview, select, rotate, delete and extract pages visually.</p>
+        </button>
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('edit','Watermark')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">💧</div>
+                <div>
+                    <strong>Watermark</strong>
+                    <span class="pp7-tool-category">Edit</span>
+                </div>
+            </div>
+            <p>Add professional text watermarks with detailed controls.</p>
+        </button>
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('optimize','Compress PDF')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">⚡</div>
+                <div>
+                    <strong>Compress PDF</strong>
+                    <span class="pp7-tool-category">Optimize</span>
+                </div>
+            </div>
+            <p>Optimize PDF output for smaller sharing-friendly files.</p>
+        </button>
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('imagestudio','Image Studio')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">🖼️</div>
+                <div>
+                    <strong>Image Studio</strong>
+                    <span class="pp7-tool-category">Optimize</span>
+                </div>
+            </div>
+            <p>Resize, crop, compress and prepare images for common formats.</p>
+        </button>
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('convert','PDF Conversion')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">🔄</div>
+                <div>
+                    <strong>PDF Conversion</strong>
+                    <span class="pp7-tool-category">Convert</span>
+                </div>
+            </div>
+            <p>Convert PDFs and supported Office/image files.</p>
+        </button>
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('security','Protect PDF')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">🛡️</div>
+                <div>
+                    <strong>Protect PDF</strong>
+                    <span class="pp7-tool-category">Security</span>
+                </div>
+            </div>
+            <p>Protect authorized PDF files with a password.</p>
+        </button>
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('security','Unlock PDF')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">🔓</div>
+                <div>
+                    <strong>Unlock PDF</strong>
+                    <span class="pp7-tool-category">Security</span>
+                </div>
+            </div>
+            <p>Remove password protection from files you are authorized to access.</p>
+        </button>
+
+        <button class="pp7-tool" onclick="PP7Dashboard.openTool('advanced','Advanced Tools')">
+            <div class="pp7-tool-top">
+                <div class="pp7-tool-icon">🧰</div>
+                <div>
+                    <strong>Advanced Tools</strong>
+                    <span class="pp7-tool-category">Advanced</span>
+                </div>
+            </div>
+            <p>Access the additional professional processing utilities.</p>
+        </button>
+
+    </div>
+
+    <div class="pp7-section-title">
+        <div>
+            <h3>Recent tools</h3>
+        </div>
+        <span>Stored locally in this browser only</span>
+    </div>
+
+    <div id="pp7RecentTools" class="pp7-recent"></div>
+
+    <div class="pp7-footer-grid">
+
+        <div class="pp7-info">
+            <h4>Privacy-first processing</h4>
+            <p>
+                PrivatePDF Pro is designed around temporary local-server
+                processing. The dashboard stores only lightweight tool
+                preferences and recent tool names in your browser.
+            </p>
+
+            <div class="pp7-badges">
+                <span class="pp7-badge">Temporary processing</span>
+                <span class="pp7-badge">No document database</span>
+                <span class="pp7-badge">Local preference storage</span>
+            </div>
+        </div>
+
+        <div class="pp7-info">
+            <h4>Keyboard shortcuts</h4>
+            <p>
+                Use <strong>Ctrl + K</strong> to open global search.
+                Use the dashboard as your central launch point for PDF
+                workflows.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+`;
+
+        const dashboard = holder.firstElementChild;
+
+        firstSection.parentNode.insertBefore(
+            dashboard,
+            firstSection
+        );
+    }
+
+    function boot(){
+
+        installDashboardSection();
+        installDashboardNav();
+
+        renderRecent();
+
+        /*
+         * Keep existing show() behavior intact.
+         * Dashboard is only activated when its navigation item
+         * or quick actions are used.
+         */
+
+        const dashboardButton =
+            document.getElementById("pp7DashboardNav");
+
+        if(dashboardButton){
+            dashboardButton.title =
+                "Open PrivatePDF Pro Dashboard";
+        }
+    }
+
+    window.PP7Dashboard = {
+        home: activateDashboard,
+        openTool: openTool,
+        recent: readRecent,
+        refresh: renderRecent
+    };
+
+    if(document.readyState === "loading"){
+        document.addEventListener("DOMContentLoaded", boot);
+    }else{
+        boot();
+    }
+
+})();
+
+</script>
+
+</body></html>

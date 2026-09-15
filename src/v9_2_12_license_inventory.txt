@@ -1,0 +1,46 @@
+V9.2.12 PRODUCTION LICENSE INVENTORY
+======================================================================
+
+Package: fastapi
+Version: 0.141.1
+License: UNKNOWN
+License classifiers: NONE
+----------------------------------------------------------------------
+
+Package: uvicorn
+Version: 0.52.4
+License: UNKNOWN
+License classifiers: NONE
+----------------------------------------------------------------------
+
+Package: python-multipart
+Version: 0.0.32
+License: UNKNOWN
+License classifiers:
+  License :: OSI Approved :: Apache Software License
+----------------------------------------------------------------------
+
+Package: pypdf
+Version: 6.18.0
+License: UNKNOWN
+License classifiers: NONE
+----------------------------------------------------------------------
+
+Package: pymupdf
+Version: 1.28.2
+License: Dual Licensed - GNU AFFERO GPL 3.0 or Artifex Commercial License
+License classifiers: NONE
+
+LEGAL REVIEW:
+PyMuPDF is dual licensed under:
+  AGPL-3.0
+  Artifex Commercial License
+Commercial proprietary deployment requires
+a deliberate licensing decision.
+----------------------------------------------------------------------
+
+Package: Pillow
+Version: 12.3.0
+License: UNKNOWN
+License classifiers: NONE
+----------------------------------------------------------------------

@@ -1,0 +1,44 @@
+======================================================================
+fastapi
+Version: 0.141.1
+License: UNKNOWN
+======================================================================
+uvicorn
+Version: 0.52.4
+License: UNKNOWN
+======================================================================
+python-multipart
+Version: 0.0.32
+License: UNKNOWN
+License classifiers:
+  License :: OSI Approved :: Apache Software License
+======================================================================
+pypdf
+Version: 6.18.0
+License: UNKNOWN
+======================================================================
+pymupdf
+Version: 1.28.2
+License: Dual Licensed - GNU AFFERO GPL 3.0 or Artifex Commercial License
+======================================================================
+Pillow
+Version: 12.3.0
+License: UNKNOWN
+======================================================================
+httpx2
+Version: 2.12.0
+License: UNKNOWN
+License classifiers:
+  License :: OSI Approved :: BSD License
+======================================================================
+starlette
+Version: 1.6.0
+License: UNKNOWN
+======================================================================
+pydantic
+Version: 2.13.5
+License: UNKNOWN
+======================================================================
+pydantic-core
+Version: 2.46.5
+License: UNKNOWN
