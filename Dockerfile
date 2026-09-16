@@ -9,6 +9,5 @@ COPY src/ ./src/
 
 ENV PYTHONPATH=/workspace/src
 ENV PORT=8000
-ENV FORWARDED_ALLOW_IPS="*"
 
 CMD uvicorn app.main:app --app-dir src --host 0.0.0.0 --port ${PORT} --proxy-headers --forwarded-allow-ips="*"
