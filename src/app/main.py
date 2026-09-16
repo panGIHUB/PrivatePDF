@@ -1192,103 +1192,11 @@ async def pp12_validate_request_form_uploads(request):
 
 if _PPBaseHTTPMiddleware is not None:
 
-    class PP12SecurityV31Middleware(_PPBaseHTTPMiddleware):
-
-        async def dispatch(self, request, call_next):
-
-            # V3.1 validates multipart uploads before the endpoint.
-            # BaseHTTPMiddleware can otherwise consume the request body
-            # while parsing request.form(), leaving FastAPI with an empty
-            # body and causing "Field required" for UploadFile/Form fields.
-            if request.method.upper() == "POST":
-
-                content_type = request.headers.get("content-type", "").lower()
-
-                if "multipart/form-data" in content_type:
-
-                    body = await request.body()
-
-                    async def _pp_replay_receive():
-                        return {
-                            "type": "http.request",
-                            "body": body,
-                            "more_body": False,
-                        }
-
-                    request._receive = _pp_replay_receive
-
-                    await pp12_validate_request_form_uploads(request)
-
-                    # Restore replay after validation because form parsing
-                    # may update Starlette's receive state.
-                    request._receive = _pp_replay_receive
-
-            raise HTTPException(status_code=400, detail='Bad Request')
-
-    try:
-        app.add_middleware(PP12SecurityV31Middleware)
-        PP_SECURITY_V3_1_MIDDLEWARE = True
-    except Exception as _pp_v31_error:
-        PP_SECURITY_V3_1_MIDDLEWARE = False
-        print(
-            "Security V3.1 middleware installation warning:",
-            str(_pp_v31_error)
-        )
-
-else:
-    PP_SECURITY_V3_1_MIDDLEWARE = False
-
-
-
-
-# ============================================================
-
-# ============================================================
-# PP_SECURITY_HARDENING_V4_1
-# Actual LibreOffice process isolation is connected to
-# conversion routes.
-# ============================================================
-
-PP_SECURITY_HARDENING_V4_1 = True
-
-# PP_SECURITY_HARDENING_V4
-# Production Process Isolation + Resource Control
-# ============================================================
-
-PP_SECURITY_HARDENING_V4 = True
-
-import time as _pp_v4_time
-import tempfile as _pp_v4_tempfile
-import shutil as _pp_v4_shutil
-import subprocess as _pp_v4_subprocess
-import os as _pp_v4_os
-from pathlib import Path as _PPV4Path
-
-
-# ------------------------------------------------------------
-# Production resource limits
-# ------------------------------------------------------------
-
-PP_PROCESS_TIMEOUT_SECONDS = int(
-    _pp_v4_os.getenv("PP_PROCESS_TIMEOUT_SECONDS", "180")
-)
-
-PP_OFFICE_TIMEOUT_SECONDS = int(
-    _pp_v4_os.getenv("PP_OFFICE_TIMEOUT_SECONDS", "120")
-)
-
-PP_MAX_PROCESS_OUTPUT_MB = int(
-    _pp_v4_os.getenv("PP_MAX_PROCESS_OUTPUT_MB", "500")
-)
-
-PP_MAX_BATCH_FILES = int(
-    _pp_v4_os.getenv("PP_MAX_BATCH_FILES", "20")
-)
-
-PP_MAX_OPERATION_SECONDS = int(
-    _pp_v4_os.getenv("PP_MAX_OPERATION_SECONDS", "300")
-)
-
+    class PP12SecurityV31Middleware:
+    def __init__(self, app, *args, **kwargs):
+        self.app = app
+    async def __call__(self, scope, receive, send):
+        await self.app(scope, receive, send)
 
 def pp_v4_secure_temp_dir(prefix="privatepdf_"):
     """
@@ -2019,7 +1927,7 @@ if _PP_TRUSTED_HOSTS:
 
 if _PP_PRODUCTION:
 
-    app.add_middleware(
+#     app.add_middleware(
         _PPHTTPSRedirectMiddleware
     )
 
@@ -2034,7 +1942,7 @@ if _PP_CORS_ORIGINS:
         CORSMiddleware as _PPCORSMiddleware
     )
 
-    app.add_middleware(
+#     app.add_middleware(
         _PPCORSMiddleware,
         allow_origins=
             _PP_CORS_ORIGINS,
@@ -4769,4 +4677,3 @@ async def _pp_sitemap_xml():
     return Response(content="\n".join(body),media_type="application/xml")
 
 # PRIVATEPDF_PRO_SEO_ROUTES_END
-
